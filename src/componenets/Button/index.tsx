@@ -1,21 +1,39 @@
+import './index.scss'
+import  React, { CSSProperties } from 'react'
 
-import {Label} from '../Text/label/label'
-
-type Props ={
-  name:string,
-  label:string,
-  action:()=>void,
-  type:'dafault'|'cancel'|'submit'
+type Props = {
+    name:string,
+    action: ()=>void,
+    color: string ,
+    icon?:()=>React.ReactNode,
+    label?:string,
+    type?:'Submit'|'Cancel'|'Next',
+    style:CSSProperties,
+    buttonType:"submit"|'reset'|'button'
 }
 
 export const Button =(props:Props)=>{
-    return(
-      <div className='button' onClick={props.action} >
-      <Label label={props.label} />
-      </div>
-    )
-} 
+
+const buttonColorRenderer =()=>{
+    switch(props.type){
+        case 'Cancel':
+        return 'rgb(233,100,100)'
+        case 'Submit':
+            return 'rgb(65,196,105)'
+        default:
+            return 'rgb(37,41,136)'    
+    }
+}
 
 
+return (
+    <button type={props.buttonType} className='button' style={{background:buttonColorRenderer(),borderWidth:0,padding:'5px',borderRadius:'5px',justifyContent:'center',...props.style}}  onClick={props.action} >{props.icon!==undefined&&props.icon()}{props.label}</button>
+)
+
+}
 
 
+Button.defaultProps={
+    style:{},
+    buttonType:'button'
+}

@@ -2,46 +2,90 @@ import React from 'react'
 import { Button } from '../../componenets/Button'
 import {Label} from '../../componenets/Text/label'
 import {Selction} from '../../componenets/selction'
-type ApplicationStatusType='Created'| 'Completed'| 'Accepted'| 'Rejected'
+import { ApplicationEvaluationAPIReqType, ApplicationStatusType } from '../../api/typs'
+import { Row } from '../../componenets/Row'
+import { Header } from '../../componenets/Text/header'
+import {useEvaluateApplicationAPI} from '../../api/evaluateApplication'
+import {ReactComponent as PDF} from '../../assets/icons/PDF.svg'
+import {ReactComponent as LinkedIn} from '../../assets/icons/LinkedIn.svg'
+import { useUpdateStatusApplicationAPI } from '../../api/updateApplicationStatus'
 type Props = {
 firstName:string,
 lastName:string,
 location:string,
-jobName:string,
-gender:number,
 position:string,
-status:'single'|'married',
-applicationStatus:ApplicationStatusType
+applicationStatus:ApplicationStatusType,
+linkedInURL:string|undefined,
+applicantId:string
 
 }
 export const ProfileInfo = (props:Props) => {
   const [score,setScore] =React.useState<number|null>(null) 
   const [value,setValue]= React.useState<ApplicationStatusType>(props.applicationStatus)
+  const [data,errors,loading] =useEvaluateApplicationAPI({applicant:props.applicantId,applicationStatus:props.applicationStatus})
+  const [statusData,statusError,statusLoading,updateApplicationStatus]=useUpdateStatusApplicationAPI({applicationId:props.applicantId,applicationStatus:props.applicationStatus as ApplicationStatusType})
 
-  const evalueate =()=>{
-    setScore(5)
-  } 
+  const changeApllicationStatus =(val:ApplicationStatusType)=>{
+    setValue(val)
 
-  const change
-  const data = [
+  }
+  const  statusColorRendarer =React.useCallback((status :ApplicationStatusType):string=>{
+    switch(status){
+        case 'Accepted':
+            return 'green'
+        case "Completed":
+            return 'rgb(253,126,20)'
+        case 'Rejected':
+            return 'red'
+
+        case 'Created':
+            return 'grey'  
+            
+        default:
+            return 'grey'
+    }
+}
+,[])
+  
+
+const renderStatus=()=>{
+  return(<Label  style={{fontFamily:'Exo-Medium',fontSize:'small',color:statusColorRendarer(value)}}>{value}</Label>)
+}
+const renderLinks =()=>{
+  return (<div><a href={data?.rusemLink}>
+  <PDF height={15} width={15}/>
+ </a>
+ <a href={data?.linkedInLink}>
+   <LinkedIn height={15} width={15}/>
+ </a>
+ </div>)
+} 
+
+const renderSelcetion =()=>{
+return <Selction  setValue={changeApllicationStatus as (val:string)=>void} value={value as string} withHideValue={true} selctionId='applicationStatus' options={options} hideValueComponent={renderStatus} label={'status'} />
+} 
+  const options = [
+    {label:'Created',value:'Created'}, 
+    {label:'Completed',value:'Completed'},
+     {label:'Accepted',value:'Accepted'},
+     {label:'Rejected',value:'Rejected'},
+  ] 
+  const tabel = [
     {label:"Name",value:`${props.firstName} ${props.lastName}`},
-    {label:"Required Position",value:`${props.firstName} ${props.lastName}`},
-    {label:"Gender",value:props.gender},
-    {label:"Score",value:score},
-    
-  ]
+    {label:"Required Position",value:props.position},
+    {label:'Location',value:props.location},
+    {label:'Links',value:data===null?"N/A":renderLinks()},
+ {label:'Status',value:data===null?"N/A":renderSelcetion()}
+  ,{label:'Total Score' ,value:data===null?"N/A":data.score}]
+  
   return (
-    <div>
+    <div style={{marginLeft:'30px'}}>
       <div>
-     <Selction/>
-      </div>
-      <div>
-      {}
-      </div>
 
-      {data.map((element,index)=><Row key={index} label={element.label} value={element.value}  />)}
-      <Button label='evaluate' name={'evlauate'} action={evalueate } color={score===null?'green':'gray'}/>
-
+      </div>
+   
+      <Header style={{alignSelf:'flex-start'}} size={20}>{props.firstName} {props.lastName}</Header>
+      {tabel.map((element,index)=><Row key={index} label={element.label} value={element.value}  />)}    
       </div>
   )
 }
@@ -49,16 +93,3 @@ export const ProfileInfo = (props:Props) => {
 
 
 
-type RowTypes = {
-    label:string,
-    value:string|number|undefined|null,
-}
-const Row =(props:RowTypes)=>{
-    return(<div className='tableRow'>
-        <div className='lableContainer'>
-        <Label style={{color:'rgb(158,156,156)'}} label={props.label} />
-        <p style={{color:'rgb(158,156,156)'}}>:</p>
-        </div>
-        <Label  label={props.label} />
-    </div>) 
-}

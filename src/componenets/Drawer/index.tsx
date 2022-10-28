@@ -1,25 +1,35 @@
 import './index.scss'
+import { ReactComponent as Home } from '../../assets/icons/Home.svg'
+import {DrawerRaw} from './DrawerRaw'
+import { ConfigType } from './types'
+
+import React from 'react'
 type Props={
-  routes:Array<{name:string,icon:string,label:string}>
+  routes:Array<ConfigType>
 }
+
 export const SideBar = (props:Props) => {
+  const [activeIndex,setActiveIndex]=React.useState(0)
+
+  const sideAction =(action:()=>void,index:number)=>{
+      if(activeIndex===index)return
+      setActiveIndex(index)
+      action()
+  }
+  
   return (
     <div id='sidebar'>
- <nav>
-          <ul>
-            <li>
-              <a href={`contacts/1`}>Your Name</a>
-            </li>
-            <li>
-              <a href={`contacts/2`}>Your Friend</a>
-            </li>
-          </ul>
-        </nav>
-    
+      
+  {props.routes.map((element:ConfigType,index:number)=><DrawerRaw sideAction={sideAction} key={index} index={index}  activeIndex={activeIndex} config={element}/>)}
+     
     </div>
   )
 }
 
 SideBar.defaultProps={
-  routes:[]
+  routes:[{name:'home',
+  icon:()=><Home fill='white' height={20} width={20} style={{marginRight:'10px'}}/>,
+  label:'Home',
+  action:()=>console.log("hellow")
+  }]
 }

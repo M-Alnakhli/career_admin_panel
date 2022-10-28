@@ -1,9 +1,22 @@
 import {Routes,Route} from 'react-router-dom'
-import {Dashboard} from '../containers/dashboard'
-export const PrivateRoute = () => {
+
+import {PrivateCandidateRoute_List} from './routLists'
+type Props={
+
+}
+export const PrivateRoute = (props:Props) => {
   return (
    <Routes>
-<Route path='/' element={<Dashboard/>} />
+{PrivateCandidateRoute_List.map((item,index:number)=><Route key={index} path={item.path}  element={item.element} />)}
    </Routes>
   )
+}
+
+
+export const PrivateUserRoute =(props:Props)=>{
+  return (
+    <Routes>
+ {PrivateCandidateRoute_List.map((item,index:number)=><Route key={index} path={item.path}  element={item.element} />)}
+    </Routes>
+   )
 }

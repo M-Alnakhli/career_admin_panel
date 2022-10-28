@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="19ff67bf-f375-43dc-86a5-0157309bc4f2" activeEnvironment="Default" name="REST Project 1" resourceRoot="" soapui-version="5.6.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:restMockService id="fbd197c4-d107-4ff6-be78-a40575a3b500" port="8080" path="/" host="DESKTOP-7VC56FU" name="suitOne"><con:settings/><con:properties/><con:restMockAction name="/getApplications" method="GET" resourcePath="/getApplications" id="3b3b48f1-6b69-4479-b023-5972427c1f18"><con:settings/><con:defaultResponse xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:dispatchPath>/*&#13;
+// Script dispatcher is used to select a response based on the incoming request.&#13;
+// Here are few examples showing how to match based on path, query param, header and body&#13;
+&#13;
+// Match based on path&#13;
+def requestPath = mockRequest.getPath()&#13;
+log.info "Path: "+ requestPath&#13;
+&#13;
+if( requestPath.contains("json") )&#13;
+{&#13;
+    // return the name of the response you want to dispatch&#13;
+    return "JSON Response"&#13;
+}&#13;
+&#13;
+&#13;
+// Match based on query parameter&#13;
+def queryString = mockRequest.getRequest().getQueryString()&#13;
+log.info "QueryString: " + queryString&#13;
+&#13;
+if( queryString.contains("stockholm") )&#13;
+{&#13;
+    // return the name of the response you want to dispatch&#13;
+    return "Response Stockholm"&#13;
+}&#13;
+else if( queryString.contains("london") )&#13;
+{&#13;
+    // return the name of the response you want to dispatch&#13;
+    return "Response London"&#13;
+}&#13;
+&#13;
+&#13;
+// Match based on header&#13;
+def acceptEncodingHeaderList = mockRequest.getRequestHeaders().get("Accept-Encoding")&#13;
+log.info "AcceptEncoding Header List: " + acceptEncodingHeaderList&#13;
+&#13;
+if( acceptEncodingHeaderList.contains("gzip,deflate") )&#13;
+{&#13;
+    // return the name of the response you want to dispatch&#13;
+    return "GZiped Response"&#13;
+}&#13;
+&#13;
+&#13;
+// Match based on body&#13;
+def requestBody = mockRequest.getRequestContent()&#13;
+log.info "Request body: " + requestBody&#13;
+&#13;
+if( requestBody.contains("some data") )&#13;
+{&#13;
+    // return the name of the response you want to dispatch&#13;
+    return "Response N"&#13;
+}&#13;
+*/&#13;
+</con:dispatchPath><con:response name="Response 1" id="2baaf815-1d06-4ad9-8e49-7ab90c33350c" httpResponseStatus="200" mediaType="application/json"><con:settings/><con:responseContent><![CDATA[{"applications":[{"applicationId":1,"firstName":"Chaddie","lastName":"Edgeler","gender":"Male","location":"Pinayagan Norte","img":"https://robohash.org/hicvoluptasimpedit.png?size=50x50&set=set1","posistion":"Structural Engineer","status":"Created"},
+{"applicationId":2,"firstName":"Zita","lastName":"Bubeer","gender":"Female","location":"Huangduobu","img":"https://robohash.org/cumquenatusalias.png?size=50x50&set=set1","posistion":"Marketing Manager","status":"Rejected"},
+{"applicationId":3,"firstName":"Emanuel","lastName":"Holwell","gender":"Male","location":"Huilong","img":"https://robohash.org/estmolestiaequos.png?size=50x50&set=set1","posistion":"Senior Developer","status":"Rejected"},
+{"applicationId":4,"firstName":"Evanne","lastName":"MacNess","gender":"Female","location":"Yashiga","img":"https://robohash.org/inquilabore.png?size=50x50&set=set1","posistion":"Administrative Assistant IV","status":"Created"},
+{"applicationId":5,"firstName":"Shannon","lastName":"Davenall","gender":"Male","location":"Baiqi","img":"https://robohash.org/dictalaborea.png?size=50x50&set=set1","posistion":"Senior Cost Accountant","status":"Created"},
+{"applicationId":6,"firstName":"Izak","lastName":"Matteotti","gender":"Male","location":"Litibakul","img":"https://robohash.org/recusandaeexercitationemtemporibus.png?size=50x50&set=set1","posistion":"Executive Secretary","status":"Created"},
+{"applicationId":7,"firstName":"Lorrin","lastName":"Bardey","gender":"Female","location":"Argungu","img":"https://robohash.org/rerumquiaodit.png?size=50x50&set=set1","posistion":"Librarian","status":"Created"},
+{"applicationId":8,"firstName":"Jaquith","lastName":"Cline","gender":"Female","location":"Nanqiao","img":"https://robohash.org/excepturietest.png?size=50x50&set=set1","posistion":"Tax Accountant","status":"Created"},
+{"applicationId":9,"firstName":"Christos","lastName":"Cauthra","gender":"Male","location":"Cabcaben","img":"https://robohash.org/excepturiexmaxime.png?size=50x50&set=set1","posistion":"Staff Accountant IV","status":"Created"},
+{"applicationId":10,"firstName":"Rodolfo","lastName":"Curtois","gender":"Male","location":"Ngedhusuba","img":"https://robohash.org/similiquedelectusrepellendus.png?size=50x50&set=set1","posistion":"Marketing Manager","status":"Created"},
+{"applicationId":11,"firstName":"Frans","lastName":"Jallin","gender":"Male","location":"Besançon","img":"https://robohash.org/ipsumnihildolorem.png?size=50x50&set=set1","posistion":"Health Coach IV","status":"Created"},
+{"applicationId":12,"firstName":"Jillane","lastName":"Trustey","gender":"Female","location":"Touba","img":"https://robohash.org/enimrepellatlibero.png?size=50x50&set=set1","posistion":"Database Administrator III","status":"Created"},
+{"applicationId":13,"firstName":"Henri","lastName":"Romer","gender":"Male","location":"San Isidro","img":"https://robohash.org/aliasnostrumcum.png?size=50x50&set=set1","posistion":"Developer IV","status":"Created"},
+{"applicationId":14,"firstName":"Sumner","lastName":"Studdal","gender":"Male","location":"Kumagaya","img":"https://robohash.org/sitnostrumeligendi.png?size=50x50&set=set1","posistion":"Chemical Engineer","status":"Created"},
+{"applicationId":15,"firstName":"Ruttger","lastName":"Cadwallader","gender":"Male","location":"Xiong’erzhai","img":"https://robohash.org/maximeeosvoluptas.png?size=50x50&set=set1","posistion":"Web Developer IV","status":"Created"},
+{"applicationId":16,"firstName":"Charmian","lastName":"Sweeny","gender":"Female","location":"Angkimang","img":"https://robohash.org/eosquidemmaiores.png?size=50x50&set=set1","posistion":"Nurse Practicioner","status":"Created"},
+{"applicationId":17,"firstName":"Egbert","lastName":"Gawith","gender":"Male","location":"Brampton","img":"https://robohash.org/etquodmagnam.png?size=50x50&set=set1","posistion":"Social Worker","status":"Male"},
+{"applicationId":18,"firstName":"Prentiss","lastName":"Selly","gender":"Male","location":"Colatina","img":"https://robohash.org/culpavoluptatemaccusamus.png?size=50x50&set=set1","posistion":"Assistant Media Planner","status":"Rejected"},
+{"applicationId":19,"firstName":"Krissy","lastName":"Getch","gender":"Female","location":"Boca do Acre","img":"https://robohash.org/aliassedvitae.png?size=50x50&set=set1","posistion":"Dental Hygienist","status":"Rejected"},
+{"applicationId":20,"firstName":"Burton","lastName":"Eshelby","gender":"Male","location":"Lleida","img":"https://robohash.org/voluptatemetodit.png?size=50x50&set=set1","posistion":"Payment Adjustment Coordinator","status":"Accepted"},
+{"applicationId":21,"firstName":"Helyn","lastName":"Troup","gender":"Female","location":"Osypenko","img":"https://robohash.org/molestiasenimat.png?size=50x50&set=set1","posistion":"VP Sales","status":"Accepted"},
+{"applicationId":22,"firstName":"Blakelee","lastName":"Ferrillo","gender":"Female","location":"Seremban","img":"https://robohash.org/etiustosit.png?size=50x50&set=set1","posistion":"Quality Control Specialist","status":"Accepted"},
+{"applicationId":23,"firstName":"Laurens","lastName":"Burkin","gender":"Male","location":"Faaa","img":"https://robohash.org/voluptatibusvoluptatemnobis.png?size=50x50&set=set1","posistion":"Senior Cost Accountant","status":"Completed"},
+{"applicationId":24,"firstName":"Teodoro","lastName":"Bilbie","gender":"Male","location":"Phon Phisai","img":"https://robohash.org/suscipitnamqui.png?size=50x50&set=set1","posistion":"Senior Developer","status":"Accepted"},
+{"applicationId":25,"firstName":"Lemmy","lastName":"Startin","gender":"Male","location":"Rokietnica","img":"https://robohash.org/fugaestsaepe.png?size=50x50&set=set1","posistion":"Senior Editor","status":"Accepted"},
+{"applicationId":26,"firstName":"Raphael","lastName":"Rosenwasser","gender":"Male","location":"Karjalohja","img":"https://robohash.org/adquivoluptates.png?size=50x50&set=set1","posistion":"Pharmacist","status":"Completed"},
+{"applicationId":27,"firstName":"Myrwyn","lastName":"Jope","gender":"Male","location":"Dingjiaqiao","img":"https://robohash.org/quasadconsequatur.png?size=50x50&set=set1","posistion":"Executive Secretary","status":"Completed"},
+{"applicationId":28,"firstName":"Kylie","lastName":"Dulake","gender":"Male","location":"Norton","img":"https://robohash.org/quisquaminnon.png?size=50x50&set=set1","posistion":"Software Consultant","status":"Completed"},
+{"applicationId":29,"firstName":"Sarena","lastName":"Mateuszczyk","gender":"Female","location":"Solţānābād","img":"https://robohash.org/ametetcorporis.png?size=50x50&set=set1","posistion":"Occupational Therapist","status":"Completed"},
+{"applicationId":30,"firstName":"Shay","lastName":"Myhan","gender":"Female","location":"Sam Phran","img":"https://robohash.org/quodconsequunturnihil.png?size=50x50&set=set1","posistion":"Computer Systems Analyst IV","status":"Completed"}],
+"totalRecords":30
+}]]></con:responseContent></con:response></con:restMockAction><con:restMockAction name="/evaluateApplication" method="POST" resourcePath="/evaluateApplication" id="66d98d70-dbfb-4ed7-9188-c3692527957d"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:dispatchPath>/*&#13;
+// Script dispatcher is used to select a response based on the incoming request.&#13;
+// Here are few examples showing how to match based on path, query param, header and body&#13;
+&#13;
+// Match based on path&#13;
+def requestPath = mockRequest.getPath()&#13;
+log.info "Path: "+ requestPath&#13;
+&#13;
+if( requestPath.contains("json") )&#13;
+{&#13;
+    // return the name of the response you want to dispatch&#13;
+    return "JSON Response"&#13;
+}&#13;
+&#13;
+&#13;
+// Match based on query parameter&#13;
+def queryString = mockRequest.getRequest().getQueryString()&#13;
+log.info "QueryString: " + queryString&#13;
+&#13;
+if( queryString.contains("stockholm") )&#13;
+{&#13;
+    // return the name of the response you want to dispatch&#13;
+    return "Response Stockholm"&#13;
+}&#13;
+else if( queryString.contains("london") )&#13;
+{&#13;
+    // return the name of the response you want to dispatch&#13;
+    return "Response London"&#13;
+}&#13;
+&#13;
+&#13;
+// Match based on header&#13;
+def acceptEncodingHeaderList = mockRequest.getRequestHeaders().get("Accept-Encoding")&#13;
+log.info "AcceptEncoding Header List: " + acceptEncodingHeaderList&#13;
+&#13;
+if( acceptEncodingHeaderList.contains("gzip,deflate") )&#13;
+{&#13;
+    // return the name of the response you want to dispatch&#13;
+    return "GZiped Response"&#13;
+}&#13;
+&#13;
+&#13;
+// Match based on body&#13;
+def requestBody = mockRequest.getRequestContent()&#13;
+log.info "Request body: " + requestBody&#13;
+&#13;
+if( requestBody.contains("some data") )&#13;
+{&#13;
+    // return the name of the response you want to dispatch&#13;
+    return "Response N"&#13;
+}&#13;
+*/&#13;
+</con:dispatchPath><con:response name="Response 1" id="201abe97-f850-4210-8e9b-065df9a8c57d" httpResponseStatus="200" mediaType="application/json"><con:settings/><con:responseContent><![CDATA[{"rusemLink":"https://intel.com/pulvinar.js?potenti=vel&in=nisl&eleifend=duis&quam=ac&a=nibh&odio=fusce&in=lacus&hac=purus&habitasse=aliquet&platea=at&dictumst=feugiat&maecenas=non&ut=pretium&massa=quis&quis=lectus&augue=suspendisse&luctus=potenti&tincidunt=in&nulla=eleifend&mollis=quam&molestie=a&lorem=odio&quisque=in&ut=hac&erat=habitasse&curabitur=platea&gravida=dictumst&nisi=maecenas&at=ut&nibh=massa&in=quis&hac=augue&habitasse=luctus&platea=tincidunt&dictumst=nulla&aliquam=mollis&augue=molestie&quam=lorem&sollicitudin=quisque&vitae=ut&consectetuer=erat&eget=curabitur&rutrum=gravida&at=nisi&lorem=at&integer=nibh&tincidunt=in&ante=hac&vel=habitasse&ipsum=platea&praesent=dictumst&blandit=aliquam&lacinia=augue&erat=quam&vestibulum=sollicitudin&sed=vitae&magna=consectetuer&at=eget&nunc=rutrum&commodo=at&placerat=lorem&praesent=integer&blandit=tincidunt&nam=ante&nulla=vel&integer=ipsum&pede=praesent&justo=blandit&lacinia=lacinia&eget=erat&tincidunt=vestibulum&eget=sed&tempus=magna&vel=at&pede=nunc&morbi=commodo&porttitor=placerat&lorem=praesent&id=blandit&ligula=nam&suspendisse=nulla&ornare=integer&consequat=pede&lectus=justo","firstName":"Carlin","lastName":"Dominighi","linkedInLink":"http://nih.gov/nam/congue/risus/semper/porta.aspx?nibh=pellentesque&quisque=at&id=nulla&justo=suspendisse&sit=potenti&amet=cras&sapien=in&dignissim=purus&vestibulum=eu&vestibulum=magna&ante=vulputate&ipsum=luctus&primis=cum&in=sociis&faucibus=natoque&orci=penatibus&luctus=et&et=magnis&ultrices=dis&posuere=parturient&cubilia=montes&curae=nascetur&nulla=ridiculus&dapibus=mus&dolor=vivamus&vel=vestibulum&est=sagittis&donec=sapien&odio=cum&justo=sociis&sollicitudin=natoque&ut=penatibus&suscipit=et&a=magnis&feugiat=dis&et=parturient&eros=montes&vestibulum=nascetur&ac=ridiculus&est=mus&lacinia=etiam&nisi=vel&venenatis=augue&tristique=vestibulum&fusce=rutrum&congue=rutrum&diam=neque&id=aenean&ornare=auctor&imperdiet=gravida&sapien=sem&urna=praesent&pretium=id&nisl=massa&ut=id&volutpat=nisl&sapien=venenatis&arcu=lacinia&sed=aenean&augue=sit&aliquam=amet&erat=justo&volutpat=morbi&in=ut&congue=odio&etiam=cras&justo=mi&etiam=pede&pretium=malesuada&iaculis=in&justo=imperdiet&in=et&hac=commodo&habitasse=vulputate&platea=justo&dictumst=in&etiam=blandit","score":55}]]></con:responseContent></con:response></con:restMockAction><con:restMockAction name="login" method="POST" resourcePath="/login" id="4f836387-c981-4359-a450-25419190e60c"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:dispatchPath>/*&#13;
+// Script dispatcher is used to select a response based on the incoming request.&#13;
+// Here are few examples showing how to match based on path, query param, header and body&#13;
+&#13;
+// Match based on path&#13;
+def requestPath = mockRequest.getPath()&#13;
+log.info "Path: "+ requestPath&#13;
+&#13;
+if( requestPath.contains("json") )&#13;
+{&#13;
+    // return the name of the response you want to dispatch&#13;
+    return "JSON Response"&#13;
+}&#13;
+&#13;
+&#13;
+// Match based on query parameter&#13;
+def queryString = mockRequest.getRequest().getQueryString()&#13;
+log.info "QueryString: " + queryString&#13;
+&#13;
+if( queryString.contains("stockholm") )&#13;
+{&#13;
+    // return the name of the response you want to dispatch&#13;
+    return "Response Stockholm"&#13;
+}&#13;
+else if( queryString.contains("london") )&#13;
+{&#13;
+    // return the name of the response you want to dispatch&#13;
+    return "Response London"&#13;
+}&#13;
+&#13;
+&#13;
+// Match based on header&#13;
+def acceptEncodingHeaderList = mockRequest.getRequestHeaders().get("Accept-Encoding")&#13;
+log.info "AcceptEncoding Header List: " + acceptEncodingHeaderList&#13;
+&#13;
+if( acceptEncodingHeaderList.contains("gzip,deflate") )&#13;
+{&#13;
+    // return the name of the response you want to dispatch&#13;
+    return "GZiped Response"&#13;
+}&#13;
+&#13;
+&#13;
+// Match based on body&#13;
+def requestBody = mockRequest.getRequestContent()&#13;
+log.info "Request body: " + requestBody&#13;
+&#13;
+if( requestBody.contains("some data") )&#13;
+{&#13;
+    // return the name of the response you want to dispatch&#13;
+    return "Response N"&#13;
+}&#13;
+*/&#13;
+</con:dispatchPath><con:response name="Response 1" id="1b1b4440-c9a9-4287-9fbc-a60e29fba444" httpResponseStatus="200" mediaType="application/json"><con:settings/><con:responseContent>{"role":"admin","status":"sucess","token":"abcde"}</con:responseContent></con:response></con:restMockAction></con:restMockService><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
