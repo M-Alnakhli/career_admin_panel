@@ -43,7 +43,7 @@ Error
 }
   return (
     <div style={{padding:'3ch',flex:1}}>
-    <Card style={{display:'flex',flex:1,flexDirection:'column',backgroundColor:'white',flexWrap: 'wrap',paddingLeft:'10px',paddingRight:'10px'}} >
+    <Card  style={{display:'flex',flex:1,flexDirection:'column',backgroundColor:'white',flexWrap: 'wrap',paddingLeft:'10px',paddingRight:'10px'}} >
       <Header style={{alignSelf:'flex-start',marginTop:'30px',marginBottom:'30px'}} size={30}>Applicants</Header>
       <QueryControllers query={query} onChangeFilter={onChangeFilter} onChangePage={onChangePage}/>
       <div  style={{display:'flex',flex:1,flexWrap: 'wrap'}}>

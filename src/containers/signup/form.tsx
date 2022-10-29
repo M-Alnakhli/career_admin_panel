@@ -2,17 +2,18 @@ import { Formik } from 'formik';
 import React, { useEffect } from 'react'
 import { Button } from '../../componenets/Button';
 import { Label } from '../../componenets/Text/label';
-import {useLoginAPI} from '../../api/loginApi'
+
 import {SignUpSchema} from '../../validations'
-import {AuthContextType, LogoutAPIResType} from '../../api/typs'
+import {AuthContextType,SignUpAPIReqType} from '../../api/typs'
 import {} from '../../'
 import { AuthContext } from '../../routes'
 import {useNavigate} from 'react-router-dom'
+import {useSignUpAPI} from '../../api/signUp'
 type Props ={
  
 }
 export const SignForm  = (props:Props) => {
-const  [data,errors,loading,login] =useLoginAPI()
+const  [data,errors,loading,signUp] =useSignUpAPI()
 const authContext =React.useContext<AuthContextType>(AuthContext)
 const navigate = useNavigate()
 React.useEffect(()=>{
@@ -26,10 +27,12 @@ if(data!==null){
     }
 }
 },[data])
-    const onSubmit =async(values:{ email: string, password: string }, { setSubmitting }:{setSubmitting:(state:boolean)=>void})=>{
+    const onSubmit =async(values:{ email: string, password: string ,userName:string}, { setSubmitting }:{setSubmitting:(state:boolean)=>void})=>{
         try{
             setSubmitting(true)
-            login({email:values.email, password:values.password })
+            console.log("it comes here");
+            
+            signUp({email:values.email, password:values.password,userName:values.userName } as SignUpAPIReqType)
         }
         catch(e){
 
@@ -38,7 +41,7 @@ if(data!==null){
   return (
     <div> 
     <Formik
-    initialValues={{ email: '', password: '' }}
+    initialValues={{ email: '', password: '' ,userName:''}}
     validationSchema={SignUpSchema}
     onSubmit={onSubmit}
   >
@@ -55,16 +58,16 @@ if(data!==null){
       <form style={{flex:1,display:'flex',flexDirection:'column',justifyContent:'space-around'}} onSubmit={handleSubmit}>
        <div style={{display:'flex',flexDirection:'column'}}>
        <div style={{flex:1,display:'flex',justifyContent:'space-between',marginBottom:'10px',width:'30ch'}}>
-         <Label>UserName</Label>
+         <Label>User Name</Label>
         <input
-          type="username"
-          name="username"
+          type="userName"
+          name="userName"
           onChange={handleChange}
           onBlur={handleBlur}
-          value={values.email}
+          value={values.userName}
         />
         </div>
-        {errors.email && touched.email && errors.email}
+        {errors.userName && touched.userName && errors.userName}
        <div style={{flex:1,display:'flex',justifyContent:'space-between',marginBottom:'10px',width:'30ch'}}>
          <Label>Email</Label>
         <input
@@ -90,7 +93,7 @@ if(data!==null){
         <div>
         </div>
         <div style={{alignSelf:'center',display:'flex',alignItems:'center',flexDirection:'column',marginTop:'10px'}}>
-        <Label >have Account {<a href='' onClick={()=>navigate('/signIn')}>Login</a>}</Label>
+        <Label >have Account {<a href='' onClick={()=>navigate('/')}>Register</a>}</Label>
         <Button  color="white" type={'Next'} action={handleSubmit} name="register" label="Register" style={{width:'15ch',height:'3vh',alignItems:'center'}}/>
         </div>
         </div>
