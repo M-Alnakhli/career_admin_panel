@@ -28,7 +28,7 @@ const logout =()=>{
   {name:'applications',
   icon:()=><CV fill='white' height={25} width={25} style={{marginRight:'10px'}}/>,
   label:'My Applications',
-  action:()=>navigationAction("/applications")
+  action:()=>navigationAction("/myownapplications")
   },
   {name:'carears',
   icon:()=><Suitcase fill='white' height={25} width={25} style={{marginRight:'10px'}}/>,

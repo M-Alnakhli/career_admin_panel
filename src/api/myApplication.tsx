@@ -1,8 +1,9 @@
 import React from "react"
 import type{ApplicationListAPIResType,ApplicationListAPIReqType} from '../api/typs'
 import {apiCall} from './'
+
 type Props=ApplicationListAPIReqType
-export const useApplicationListAPI =(props:Props)=>{
+export const useMyApplicationListAPI =(props:Props)=>{
 
 const [apiData,setApiData ] =React.useState<{errors:{error:any}|null,loading:boolean,data:null|ApplicationListAPIResType}>({errors:null,loading:true,data:null})
 
@@ -25,7 +26,7 @@ const getApplicationList =async()=>{
         setApiData(pre=>({...pre,loading:true}))
     }
     try{
-        const response:ApplicationListAPIResType = await apiCall('/getApplications','GET',{params:props.filters})
+        const response:ApplicationListAPIResType = await apiCall('/myapplications','GET',{params:props.filters})
         newLoading =false
      
         

@@ -3,7 +3,7 @@ import type{SignUpAPIReqType,SignUpAPIResType} from '../api/typs'
 import {apiCall} from './'
 import crypto from 'crypto';
 type Props={}
-export const useSignUpAPI =(props:Props)=>{
+export const useSignUpAPI =()=>{
 
 let [apiData,setApiData] =React.useState<{errors:{error:any}|null,loading:boolean,data:null|SignUpAPIResType}>({errors:null,loading:true,data:null})
 
@@ -14,10 +14,10 @@ const signUp =async(data:SignUpAPIReqType)=>{
         setApiData(pre=>({...pre,loading:true}))
     }
     try{
-        const email = encrypt(data.email)
-        const pass = encrypt(data.password)
+        // const email = encrypt(data.email)
+        // const pass = encrypt(data.password)
 
-        const response:SignUpAPIResType = await apiCall('/register','post',{data:{...data,password:pass,email:email}})
+        const response:SignUpAPIResType = await apiCall('/register','post',{data})
         
         if(response?.status!==undefined){
             newData =response
@@ -33,7 +33,7 @@ const signUp =async(data:SignUpAPIReqType)=>{
 
 }
 
-    return [apiData.data,apiData.errors,apiData.loading,signUp]
+    return [apiData.data,apiData.errors,apiData.loading,signUp] as const 
 }
 const KEY = process.env.ENCRYPTION_KEY;
 

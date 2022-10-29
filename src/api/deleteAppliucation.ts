@@ -7,19 +7,16 @@ type Props={
   
     
 }
-export const useDeleteApplicationAPI =(props:Props)=>{
+export const useDeleteApplicationAPI =()=>{
 
-let [apiData,setApiData]=React.useState <{errors:{error:any}|null,loading:boolean,data:null|any}>({errors:null,loading:true,data:null})
-
-React.useEffect(()=>{
-deleteApplication()
-},[])
+let [apiData,setApiData]=React.useState <{errors:{error:any}|null,loading:boolean,data:null|ApplicationDeleteAPIResType}>({errors:null,loading:true,data:null})
 
 
-const deleteApplication =async()=>{
+
+const deleteApplication =async(applicationId:string)=>{
     let newErros,newData =null
     try{
-        const response:ApplicationDeleteAPIResType = await apiCall('localhost:3000/deleteApplication','post',{data:props.applicationId})
+        const response:ApplicationDeleteAPIResType = await apiCall('/deleteApplication','post',{data:{applicationId:applicationId}})
    
         if(response?.status!==undefined){
             newData =response
@@ -32,5 +29,5 @@ newErros =e
     setApiData({errors:null,loading:true,data:null})
 }
 
-    return apiData
+    return [apiData.data,apiData.errors,apiData.loading,deleteApplication] as const 
 }

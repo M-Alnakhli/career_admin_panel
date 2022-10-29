@@ -3,7 +3,7 @@ import {
     BrowserRouter,
 } from "react-router-dom";
 import {SidebarNavigator} from './sidebar'
-import {PrivateRoute, PrivateUserRoute} from './private' 
+import {PrivateRoute, PrivateUserRoute,PrivateAdminRoute} from './private' 
 import './index.scss'
 import { TopBar } from "../componenets/topBar";
 import {PublicRoute} from './public'
@@ -38,7 +38,7 @@ return (
        <div className="mainContainer">
        <SidebarNavigator logout={logout}/>
        <div className="pageContainer">
-       <PrivateRoute />
+       <PrivateAdminRoute />
        </div>
         </div>:logedIng.role==='user'?
            <div className="mainContainer">

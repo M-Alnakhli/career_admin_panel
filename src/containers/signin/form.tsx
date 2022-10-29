@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { Button } from '../../componenets/Button';
 import { Label } from '../../componenets/Text/label';
 import {useLoginAPI} from '../../api/loginApi'
-import {SignUpSchema} from '../../validations'
+import {SignInSchema} from '../../validations'
 import {AuthContextType, LogoutAPIResType} from '../../api/typs'
 import {} from '../../'
 import { AuthContext } from '../../routes'
@@ -41,7 +41,7 @@ if(data!==null){
     <div> 
     <Formik
     initialValues={{ email: '', password: '' }}
-    validationSchema={SignUpSchema}
+    validationSchema={SignInSchema}
     onSubmit={onSubmit}
   >
     {({
@@ -51,12 +51,10 @@ if(data!==null){
       handleChange,
       handleBlur,
       handleSubmit,
-      isSubmitting,
-      /* and other goodies */
     }) => (
       <form style={{flex:1,display:'flex',flexDirection:'column',justifyContent:'space-around'}} onSubmit={handleSubmit}>
        <div style={{display:'flex',flexDirection:'column'}}>
-       <div style={{flex:1,display:'flex',justifyContent:'space-between',marginBottom:'3px',width:'30ch'}}>
+       <div style={{flex:1,display:'flex',justifyContent:'space-between',marginBottom:'3px',width:'30ch',marginTop:'-60px'}}>
          <Label>Email</Label>
         <input
           type="email"
@@ -82,9 +80,9 @@ if(data!==null){
       
         <div>
         </div>
-        <div style={{alignSelf:'center',display:'flex',alignItems:'center',flexDirection:'column',marginTop:'10px'}}>
-        <Label >Do not have Account {<a href='' onClick={()=>navigate('/signUp')}>Register</a>}</Label>
-        <Button buttonType={"submit"}  color="white" type={'Next'} action={handleSubmit} name="register" label="Register" style={{width:'15ch',height:'3vh',alignItems:'center'}}/>
+        <div style={{alignSelf:'center',display:'flex',alignItems:'center',flexDirection:'column',marginTop:'20px'}}>
+        <Label >Do not have Account {<a href='' onClick={()=>navigate('/signup')}>Register</a>}</Label>
+        <Button buttonType={"submit"}  color="white" type={'Next'} action={handleSubmit} name="register" label="Login" style={{width:'15ch',height:'3vh',alignItems:'center'}}/>
         </div>
         </div>
       </form>

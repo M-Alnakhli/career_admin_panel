@@ -13,7 +13,7 @@ export const LandingPage = () => {
       
        <Logo fill='white' height={60} width={60} />
       <Header size={50} style={{color:'white'}}>Carears</Header>
-      <Label>#1 Profisinal Hiring Site </Label>
+   
       </div>
       <Button name="login" label="Login" style={{width:'25ch',height:'4vh',alignItems:'center'}} action={()=>navigate('/signin')}
     color={'white'} 

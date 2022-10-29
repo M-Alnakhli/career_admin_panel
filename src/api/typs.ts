@@ -16,7 +16,7 @@ export type  ApplicationListAPIResType ={applications:ApplicationListItem[],tota
 export type ApplicationListItem =ApplicationConfigration&{applicationId?:string} 
 export type CareerConfig ={
     positionId?:string|null,
-    postion?:string|null,
+    position?:string|null,
     location?:string|null,
     type?:string, 
 
@@ -24,7 +24,7 @@ export type CareerConfig ={
 }
 export type  CareerListAPIReqType ={ offset:number,
     pageNumber:number,}&CareerConfig
-export type  CarearListAPIResType =Array<CareerConfig&{description?:string}>
+export type  CarearListAPIResType ={carears:Array<CareerConfig&{description?:string}>}
 
 
 export type  ApplicationUpdateAPIReqType =ApplicationConfigration&{applicationId?:string}

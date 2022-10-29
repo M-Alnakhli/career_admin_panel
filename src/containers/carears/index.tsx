@@ -9,6 +9,8 @@ import {CarearlistRow} from './carearListRow'
 export const Carears= () => {
   const [query,setQuery]=React.useState<CareerListAPIReqType>({offset:0,pageNumber:0,location:null,positionId:null})
   const [data,errors,loading] =useCarearListAPI(query)
+  
+  
   if(loading){
 
   
@@ -18,7 +20,8 @@ export const Carears= () => {
     </p>
   )
   }
-if(errors?.error!==null){
+if(errors!==null&& errors?.error!==null){
+console.log('here is the erorr',errors);
 
  
   return( <p>
@@ -29,9 +32,9 @@ Error
   return (
     <div style={{padding:'3ch',flex:1}}>
     <Card style={{display:'flex',flex:1,backgroundColor:'white',flexWrap: 'wrap',paddingLeft:'10px',paddingRight:'10px'}} >
-      <Header style={{alignSelf:'flex-start',marginTop:'30px',marginBottom:'30px'}} size={30}>Applicants</Header>
+      <Header style={{alignSelf:'flex-start',marginTop:'30px',marginBottom:'30px'}} size={30}>Carears</Header>
       <div  style={{display:'flex',flex:1,flexWrap: 'wrap'}}>
-    {data!==null&&data.applications.map((element: CareerConfig,index: React.Key | null | undefined)=><CarearlistRow key={index} {...element}/>)}
+    {data!==null&&data.carears.map((element: CareerConfig,index: React.Key | null | undefined)=><CarearlistRow key={index} {...element}/>)}
     </div>
     </Card>
     </div>

@@ -4,7 +4,7 @@ import {apiCall} from './'
 type Props=CareerListAPIReqType
 export const useCarearListAPI =(props:Props)=>{
 
-const  [apiData,setApiData]=React.useState<{errors:{error:any}|null,loading:boolean,data:null|any}>( {errors:null,loading:true,data:null})
+const  [apiData,setApiData]=React.useState<{errors:{error:any}|null,loading:boolean,data:null|CarearListAPIResType}>( {errors:null,loading:true,data:null})
 
 React.useEffect(()=>{
     getCarearsList()
@@ -21,7 +21,7 @@ const getCarearsList =async()=>{
         const response:CarearListAPIResType = await apiCall('/getCarears','GET',{params:{...props}
     })
     newLoading =false
-        if(response?.length!==undefined){
+        if(response?.carears.length!==undefined){
 
             newData =response
 
@@ -30,7 +30,7 @@ const getCarearsList =async()=>{
         newErros={error:e}
     }
      
-    setApiData({errors:newErros,loading:newLoading,data:newData})
+    setApiData({errors:newErros,loading:newLoading,data:newData as CarearListAPIResType})
 }
 
     return [apiData.data,apiData.errors,apiData.loading] as const

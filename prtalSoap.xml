@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:soapui-project id="19ff67bf-f375-43dc-86a5-0157309bc4f2" activeEnvironment="Default" name="REST Project 1" resourceRoot="" soapui-version="5.6.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:restMockService id="fbd197c4-d107-4ff6-be78-a40575a3b500" port="8080" path="/" host="DESKTOP-7VC56FU" name="suitOne"><con:settings/><con:properties/><con:restMockAction name="/getApplications" method="GET" resourcePath="/getApplications" id="3b3b48f1-6b69-4479-b023-5972427c1f18"><con:settings/><con:defaultResponse xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:dispatchPath>/*&#13;
+<con:soapui-project id="19ff67bf-f375-43dc-86a5-0157309bc4f2" activeEnvironment="Default" name="REST Project 1" resourceRoot="" soapui-version="5.6.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:restMockService id="fbd197c4-d107-4ff6-be78-a40575a3b500" port="8080" path="/" host="DESKTOP-7VC56FU" name="suitOne"><con:settings/><con:properties/><con:restMockAction name="/getApplications" method="GET" resourcePath="/getApplications" id="3b3b48f1-6b69-4479-b023-5972427c1f18"><con:settings/><con:defaultResponse xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:dispatchPath>/*&#13;
 // Script dispatcher is used to select a response based on the incoming request.&#13;
 // Here are few examples showing how to match based on path, query param, header and body&#13;
 &#13;
@@ -186,4 +186,60 @@ if( requestBody.contains("some data") )&#13;
     return "Response N"&#13;
 }&#13;
 */&#13;
-</con:dispatchPath><con:response name="Response 1" id="1b1b4440-c9a9-4287-9fbc-a60e29fba444" httpResponseStatus="200" mediaType="application/json"><con:settings/><con:responseContent>{"role":"admin","status":"sucess","token":"abcde"}</con:responseContent></con:response></con:restMockAction></con:restMockService><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
+</con:dispatchPath><con:response name="Response 1" id="1b1b4440-c9a9-4287-9fbc-a60e29fba444" httpResponseStatus="200" mediaType="application/json"><con:settings/><con:responseContent>{"role":"admin","status":"sucess","token":"abcde"}</con:responseContent></con:response></con:restMockAction><con:restMockAction name="/myapplications" method="GET" resourcePath="/myapplications" id="8c8f4533-53c6-4896-a7dc-b6ac5b9e855b"><con:settings/><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:dispatchPath>/*&#13;
+// Script dispatcher is used to select a response based on the incoming request.&#13;
+// Here are few examples showing how to match based on path, query param, header and body&#13;
+&#13;
+// Match based on path&#13;
+def requestPath = mockRequest.getPath()&#13;
+log.info "Path: "+ requestPath&#13;
+&#13;
+if( requestPath.contains("json") )&#13;
+{&#13;
+    // return the name of the response you want to dispatch&#13;
+    return "JSON Response"&#13;
+}&#13;
+&#13;
+&#13;
+// Match based on query parameter&#13;
+def queryString = mockRequest.getRequest().getQueryString()&#13;
+log.info "QueryString: " + queryString&#13;
+&#13;
+if( queryString.contains("stockholm") )&#13;
+{&#13;
+    // return the name of the response you want to dispatch&#13;
+    return "Response Stockholm"&#13;
+}&#13;
+else if( queryString.contains("london") )&#13;
+{&#13;
+    // return the name of the response you want to dispatch&#13;
+    return "Response London"&#13;
+}&#13;
+&#13;
+&#13;
+// Match based on header&#13;
+def acceptEncodingHeaderList = mockRequest.getRequestHeaders().get("Accept-Encoding")&#13;
+log.info "AcceptEncoding Header List: " + acceptEncodingHeaderList&#13;
+&#13;
+if( acceptEncodingHeaderList.contains("gzip,deflate") )&#13;
+{&#13;
+    // return the name of the response you want to dispatch&#13;
+    return "GZiped Response"&#13;
+}&#13;
+&#13;
+&#13;
+// Match based on body&#13;
+def requestBody = mockRequest.getRequestContent()&#13;
+log.info "Request body: " + requestBody&#13;
+&#13;
+if( requestBody.contains("some data") )&#13;
+{&#13;
+    // return the name of the response you want to dispatch&#13;
+    return "Response N"&#13;
+}&#13;
+*/&#13;
+</con:dispatchPath><con:response name="Response 1" id="ac7ef047-7d43-4389-846c-be3a0155d531" httpResponseStatus="200" mediaType="application/json"><con:settings/><con:responseContent>{"applications":[{"applicationId":1,"firstName":"Chaddie","lastName":"Edgeler","gender":"Male","location":"Pinayagan Norte","img":"https://robohash.org/hicvoluptasimpedit.png?size=50x50&amp;set=set1","posistion":"Structural Engineer","status":"Created"},
+{"applicationId":2,"firstName":"Zita","lastName":"Bubeer","gender":"Female","location":"Huangduobu","img":"https://robohash.org/cumquenatusalias.png?size=50x50&amp;set=set1","posistion":"Marketing Manager","status":"Rejected"},
+{"applicationId":3,"firstName":"Emanuel","lastName":"Holwell","gender":"Male","location":"Huilong","img":"https://robohash.org/estmolestiaequos.png?size=50x50&amp;set=set1","posistion":"Senior Developer","status":"Rejected"},
+{"applicationId":4,"firstName":"Evanne","lastName":"MacNess","gender":"Female","location":"Yashiga","img":"https://robohash.org/inquilabore.png?size=50x50&amp;set=set1","posistion":"Administrative Assistant IV","status":"Created"},
+{"applicationId":5,"firstName":"Shannon","lastName":"Davenall","gender":"Male","location":"Baiqi","img":"https://robohash.org/dictalaborea.png?size=50x50&amp;set=set1","posistion":"Senior Cost Accountant","status":"Created"}],"totalRecords":30}</con:responseContent></con:response></con:restMockAction></con:restMockService><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
