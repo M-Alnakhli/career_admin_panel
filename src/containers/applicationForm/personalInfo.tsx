@@ -85,7 +85,7 @@ export const PersonalInfo = () => {
           onBlur={handleBlur}
           value={values.mobile}
         />
-         <ErrorMessage name='mobile'>{(errors:string)=><Label style={{color:'red',fontSize:5}}>{errors}</Label>}</ErrorMessage>
+         <ErrorMessage name='mobile'>{(errors:string)=><Label style={{color:'red'}}>{errors}</Label>}</ErrorMessage>
         </div>
 
        

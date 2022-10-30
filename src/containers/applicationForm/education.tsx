@@ -90,7 +90,7 @@ export const EducationInfo = () => {
         </div>
       
         </div>))}
-        <Button  color="white" type={'Next'} action={()=>{push({institution:'',degree:'Bachelor',counrty:'',mager:'',})}} name="apply" label="Add" style={{width:'7ch'}}/>
+        <Button  color="white" type={'Next'} action={()=>{push({institution:'',degree:'Bachelor',counrty:'',mager:'',})}} name="apply" label="Add Qualification" style={{width:'14ch'}}/>
              
         </div>)}
         </FieldArray>

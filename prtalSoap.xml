@@ -294,7 +294,7 @@ if( requestBody.contains("some data") )&#13;
     return "Response N"&#13;
 }&#13;
 */&#13;
-</con:dispatchPath><con:response name="Response 1" id="2737b7a5-85df-494f-a50d-00dcb667601b" httpResponseStatus="200" mediaType="application/json"><con:settings/><con:responseContent>{"role":"admin","status":"sucess","token":"abcde"}</con:responseContent></con:response></con:restMockAction><con:restMockAction name="/getCarears" method="GET" resourcePath="/getCarears" id="ca9e6eca-81d1-4f6e-aac0-2ab3c59cb6d7"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:dispatchPath>/*&#13;
+</con:dispatchPath><con:response name="Response 1" id="2737b7a5-85df-494f-a50d-00dcb667601b" httpResponseStatus="200" mediaType="application/json"><con:settings/><con:responseContent>{"role":"user","status":"sucess","token":"abcde"}</con:responseContent></con:response></con:restMockAction><con:restMockAction name="/getCarears" method="GET" resourcePath="/getCarears" id="ca9e6eca-81d1-4f6e-aac0-2ab3c59cb6d7"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:dispatchPath>/*&#13;
 // Script dispatcher is used to select a response based on the incoming request.&#13;
 // Here are few examples showing how to match based on path, query param, header and body&#13;
 &#13;

@@ -10,7 +10,7 @@ export const CVInfo = () => {
     const {values,errors,touched,handleBlur,handleChange}:FormikProps<ApplicationFormType> =useFormikContext()
     
   return (
-    <Card style={{display:'flex',backgroundColor:'white',flexWrap: 'wrap',paddingLeft:'20px',paddingRight:'20px',height:'45vh',justifyContent:'space-around',marginTop:'2vh'}} >
+    <Card style={{display:'flex',backgroundColor:'white',flexWrap: 'wrap',paddingLeft:'20px',paddingRight:'20px',justifyContent:'space-around',marginTop:'2vh'}} >
        
         <Header style={{marginBottom:'3vh',alignSelf:'start'}} size={30} >
            Uploads

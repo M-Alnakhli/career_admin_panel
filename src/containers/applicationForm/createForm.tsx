@@ -37,7 +37,7 @@ export const CreateForm= () => {
     }
 }
   return (
-    <div style={{padding:'3ch',flex:1,display:'flex',flexWrap:'wrap'}}>
+    <div style={{padding:'3ch',flex:1,display:'flex',flexWrap:'wrap',}}>
  <Formik
  
    onSubmit={onSubmit}
@@ -46,11 +46,14 @@ export const CreateForm= () => {
        validationSchema={ApplicationFormSchema}
      >
        {({handleSubmit}) => (
-         <form style={{flex:1,display:'flex',flexDirection:'column'}}  onSubmit={handleSubmit}>
+         <form style={{flex:1,display:'flex',flexDirection:'column',paddingBottom:'20vh'}}  onSubmit={handleSubmit}>
             <PersonalInfo/>
             <EducationInfo/>
             <CVInfo/>
-            <Button  color="white" type={'Next'} action={handleSubmit} name="register" label="Submit" style={{width:'15ch',height:'3vh',alignItems:'center'}}/>
+            <div style={{marginTop:'2vh',display:'flex',justifyContent:'center'}}>
+            <Button  color="white" type={'Submit'} action={handleSubmit} name="submit" label="Submit" style={{width:'15ch',height:'3vh',alignItems:'center',marginRight:'2ch'}}/>
+            <Button  color="white" type={'Next'} action={handleSubmit} name="submit" label="Save" style={{width:'15ch',height:'3vh',alignItems:'center'}}/>
+            </div>
          </form>)}
          </Formik>
 
