@@ -1,3 +1,4 @@
+import { string } from "yup"
 
 export type ApplicationStatusType='Created'| 'Completed'| 'Accepted'| 'Rejected'|null
 export type  ApplicationListAPIReqType ={
@@ -53,7 +54,15 @@ export type  ApplicationConfigration ={firstName:string,
     status:string
     linkedInURL?:string,
     Rusame?:File|string,
-    img?:File|string} 
+    img?:File|string,
+    skils:SkillType[]
+    } 
+
+
+
+export type SkillType ={
+label:string,skillID: string}
+    
 export type  ApplicationCreateAPIReqType= ApplicationConfigration
 export type  ApplicationCreateAPIResType ={
 applicationId?:string

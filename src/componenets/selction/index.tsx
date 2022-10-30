@@ -22,9 +22,9 @@ const onSelect =(val:string)=>{
 }
   return (
     <div style={{display:'flex'}}>
-   {!props.withHideValue&& <Label>{props.label}:</Label>}
+   {!props.withHideValue&& <Label style={{marginRight:'10px'}}>{props.label}:</Label>}
    {showSelection?
-    <select style={{lineHeight:'0'}} onChange={(e)=>onSelect(e.target.value)} name={props.selctionId} id={props.selctionId} value={props.value}>
+    <select style={{lineHeight:'0',height:'4vh'}} onChange={(e)=>onSelect(e.target.value)} name={props.selctionId} id={props.selctionId} value={props.value}>
     {props.options.map((element,index)=><option key={index} value={element.value}>{element.label}</option>)}
      </select>:
    <div style={{display:'flex',alignItems:"flex-start",justifyContent:"flex-end"}}>

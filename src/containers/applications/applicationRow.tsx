@@ -3,6 +3,7 @@ import {ProfileInfo} from './profileInfo'
 import {Card} from '../../componenets/Card'
 import { ApplicationStatusType } from '../../api/typs'
 import './index.scss'
+import { Header } from '../../componenets/Text/header'
 type Props = {
 firstName:string,
 lastName:string,
@@ -17,7 +18,7 @@ applicantId:string
 export const ApplicationRow = (props:Props) => {
   return (
     <div style={{display:'flex',alignItems:'center'}} >
-<ProfileImg img={props.img} size={240}/>
+<ProfileImg img={props.img} size={200}/>
 <ProfileInfo
  firstName={props.firstName}
 lastName={props.lastName}

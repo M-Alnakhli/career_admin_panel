@@ -71,8 +71,7 @@ return <Selction  setValue={changeApllicationStatus as (val:string)=>void} value
      {label:'Rejected',value:'Rejected'},
   ] 
   const tabel = [
-    {label:"Name",value:`${props.firstName} ${props.lastName}`},
-    {label:"Required Position",value:props.position},
+    {label:"Applied For",value:props.position},
     {label:'Location',value:props.location},
     {label:'Links',value:data===null?"N/A":renderLinks()},
  {label:'Status',value:data===null?"N/A":renderSelcetion()}
@@ -84,7 +83,7 @@ return <Selction  setValue={changeApllicationStatus as (val:string)=>void} value
 
       </div>
    
-      <Header style={{alignSelf:'flex-start'}} size={20}>{props.firstName} {props.lastName}</Header>
+    
       {tabel.map((element,index)=><Row key={index} label={element.label} value={element.value}  />)}    
       </div>
   )

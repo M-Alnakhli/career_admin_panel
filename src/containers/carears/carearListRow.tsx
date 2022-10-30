@@ -1,17 +1,19 @@
 
-import {ApplicationStatusType, CareerConfig} from '../../api/typs'
+import {ApplicationStatusType, AuthContextType, CareerConfig} from '../../api/typs'
 import {useNavigate} from "react-router-dom"
 import { Row} from '../../componenets/Row'
 import { Label } from "../../componenets/Text/label"
 import './index.scss'
 import React from "react"
+import { AuthContext} from '../../routes'
+import { Button } from '../../componenets/Button'
 export type Props  =CareerConfig
 export const CarearlistRow = (props:Props) => {
     const navigation  =useNavigate()
-    console.log('here is the props ,',props);
+    const authContext :AuthContextType = React.useContext(AuthContext)
     
     const onClick=()=>{
-        navigation(`/carearDetails/${props.positionId}`,{state:{item:{...props}}})
+        navigation(`/createForm`,{state:{item:{...props}}})
     }
    
   return (
@@ -21,6 +23,11 @@ export const CarearlistRow = (props:Props) => {
         <Label style={{fontFamily:'Exo-Medium',fontSize:'medium'}}>{`${props.position}`}</Label>
         <Row label={'Location'} value={props.location }/>
         </div> 
+        <div style={{position:'relative'}}>
+        <div  style={{position:'absolute',bottom:'0px',right:'5px',display:'flex'}}>
+{authContext.authInfo.role==='user'&&<Button  color="white" type={'Next'} action={onClick} name="apply" label="Apply" style={{width:'7ch'}}/>}
+</div>
+</div>
        </div>
 
 

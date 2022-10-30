@@ -13,8 +13,11 @@ export const ApplicationDetails= (props:Props) => {
   const mappedItem:ApplicationListItem= item
   return (
     <div style={{padding:'3ch',flex:1}}>
-    <Card style={{display:'flex',flex:1,flexDirection:'column',backgroundColor:'white',flexWrap: 'wrap',paddingLeft:'20px',paddingRight:'20px'}} >
+    <Card style={{display:'flex',flex:1,backgroundColor:'white',flexWrap: 'wrap',paddingLeft:'20px',paddingRight:'20px'}} >
+    <Header style={{alignSelf:'center'}} size={30}>{mappedItem.firstName} {mappedItem.lastName}</Header>
+<div style={{display:'flex',flex:1,flexDirection:'column',backgroundColor:'white',flexWrap: 'wrap',paddingLeft:'20px',paddingRight:'20px'}}>
       <ApplicationRow  applicantId={mappedItem.applicationId as string} position={mappedItem.posistion} location={mappedItem.location} lastName={mappedItem.lastName} firstName={mappedItem.firstName} linkedInURL={mappedItem.linkedInURL} applicationStatus={mappedItem.status as ApplicationStatusType} img={mappedItem.img as string}/>
+      </div>
     </Card>
     </div>
   )

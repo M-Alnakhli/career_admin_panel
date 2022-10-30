@@ -7,20 +7,17 @@ type Props={
   
     
 }
-export const useCreateApplicationAPI =(props:Props)=>{
+export const useCreateApplicationAPI =()=>{
 
 let [apiData,setApiData]= React.useState<{errors:{error:any}|null,loading:boolean,data:null|any}>({errors:null,loading:true,data:null})
 
-React.useEffect(()=>{
-submitRusame()
-},[])
 
 
-const submitRusame =async()=>{
+const submitRusame =async(  applicationInfo:ApplicationConfigration)=>{
 let newErros,newData =null
 
     try{
-        const response:ApplicationCreateAPIResType = await apiCall('/createApplication','post',{data:props.applicationInfo})
+        const response:ApplicationCreateAPIResType = await apiCall('/createApplication','post',{data:applicationInfo})
         if(response?.applicationId!==undefined){
             newData =response
         }
@@ -32,5 +29,5 @@ let newErros,newData =null
     setApiData({loading:false,data:newData,errors:{error:newErros}})
 }
 
-    return {...apiData}
+    return [apiData.data,apiData.errors,apiData.loading,submitRusame]
 }
