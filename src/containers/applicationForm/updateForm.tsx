@@ -3,7 +3,7 @@ import { useCarearListAPI } from "../../api/crearesApi";
 import {} from "../../api/typs";
 import { Card } from "../../componenets/Card";
 import { Header } from "../../componenets/Text/header";
-import { useUpdateApplicationAPI } from "../../api/updateApplicationApi";
+import { useCreateApplicationAPI } from "../../api/creatApplicationApi";
 import { Formik } from "formik";
 import {} from "../../validations";
 import { CVInfo } from "./cvInfo";
@@ -39,9 +39,11 @@ type AcadimecQualificationType = {
 export const UpdateForm = () => {
 
   const {state:{item}} = useLocation()
-  const [data, errors, loading, updateApplication] = useUpdateApplicationAPI();
+  
+  const [data, errors, loading, updateApplication] = useCreateApplicationAPI();
   const [getData, getErrors, getLoading]=useApplicationDetailsAPI(item.applicationId)
   
+
 
   
   const onSubmit = async (
@@ -49,16 +51,24 @@ export const UpdateForm = () => {
     { setSubmitting }: { setSubmitting: (state: boolean) => void }
   ) => {
     try {
-      console.log("here iarwe tje values",values);
-      
       setSubmitting(true);
       await updateApplication(values);
     } catch (e) {}
   };
+
+  if (getLoading) {
+    return <p>loading...</p>;
+  }
+  if (getErrors?.error !== null) {
+    return <p>Error</p>;
+  }
+
+
+
   return (
     <div style={{ padding: "3ch", flex: 1, display: "flex", flexWrap: "wrap" }}>
       <Formik
-      enableReinitialize={true}
+  
         onSubmit={onSubmit}
         initialValues={{
           firstName: getData?.firstName||'',
