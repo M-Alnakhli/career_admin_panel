@@ -7,6 +7,7 @@ import {
 import { Card } from "../../componenets/Card";
 import { Header } from "../../componenets/Text/header";
 import { MyApplicationlistRow } from "./myApplicationListRow";
+
 export const MyApplications = () => {
   const [query, setQuery] = React.useState<ApplicationListAPIReqType>({
     offset: 0,

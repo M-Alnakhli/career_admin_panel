@@ -8,6 +8,7 @@ import { SignIn } from "../containers/signin";
 import { SignUp } from "../containers/signup";
 import { MyApplications } from "../containers/myApplications";
 import { CreateForm } from "../containers/applicationForm/createForm";
+import { UpdateForm } from "../containers/applicationForm/updateForm";
 const PrivateAdminRoute_List = [
   { name: "home", path: "/", element: <Dashboard /> },
   { name: "alpplications", path: "/applications", element: <Applications /> },
@@ -45,6 +46,7 @@ const PrivateCandidateRoute_List = [
   { name: "careers", path: "/carears", element: <Carears /> },
   { name: "carearDetails", path: "/carearDetails", element: <CarearDetails /> },
   { name: "createForm", path: "/createForm", element: <CreateForm /> },
+   {name:'updateForm',path:"/updateFormPage",element:<UpdateForm/>}
 ];
 const PublicCandidateRoute_List = [
   { name: "signIn", path: "/", element: <SignIn /> },

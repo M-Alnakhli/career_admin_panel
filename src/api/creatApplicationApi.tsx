@@ -35,7 +35,7 @@ export const useCreateApplicationAPI = () => {
         positionID: applicationInfo.positionID,
       };
 
-      //check if app;
+      //check if application do exist include it ;
       if (applicationInfo.applicationId !== undefined) {
         otherData.applicationId = applicationInfo.applicationId;
       }
@@ -46,12 +46,6 @@ export const useCreateApplicationAPI = () => {
       );
       formData.append("otherData", JSON.stringify(otherData));
       let headers: any = {};
-
-      //check form cv to upload
-      if (applicationInfo.cv !== undefined) {
-        formData.append("file", applicationInfo.cv as File);
-        headers["Content-Type"] = "multipart/form-data";
-      }
 
       const response: ApplicationCreateAPIResType = await apiCall(
         "/createApplication",

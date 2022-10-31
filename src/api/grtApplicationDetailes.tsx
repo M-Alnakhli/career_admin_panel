@@ -14,11 +14,7 @@ export const useApplicationDetailsAPI = (props: Props) => {
     data: null | ApplicationFormType;
   }>({ errors: null, loading: true, data: null });
 
-  React.useEffect(() => {
-    getApplicationDetails();
-  }, []);
 
-  React.useEffect(() => {});
 
   const getApplicationDetails = async () => {
     let newError: any,
@@ -29,16 +25,21 @@ export const useApplicationDetailsAPI = (props: Props) => {
     }
     try {
       const response: ApplicationFormType = await apiCall(
-        "/getApplications",
+        "/getApplicationDetails",
         "GET",
         { params: { applicationId: props.applicationId } }
       );
       newLoading = false;
-
+      console.log("fdfdf",response);
+      return 
       if (response !== undefined) {
         newData = response;
       }
+   
+      
     } catch (e) {
+        console.log(e);
+        
       newError = e;
     }
 
