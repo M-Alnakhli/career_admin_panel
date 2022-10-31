@@ -3,40 +3,35 @@ import type {
   ApplicationListAPIResType,
   ApplicationListAPIReqType,
 } from "../api/typs";
+import { ApplicationFormType } from "../containers/applicationForm/createForm";
 import { apiCall } from "./";
 
-type Props = ApplicationListAPIReqType;
-export const useMyApplicationListAPI = (props: Props) => {
+type Props = { applicationId: string };
+export const useApplicationDetailsAPI = (props: Props) => {
   const [apiData, setApiData] = React.useState<{
     errors: { error: any } | null;
     loading: boolean;
-    data: null | ApplicationListAPIResType;
+    data: null | ApplicationFormType;
   }>({ errors: null, loading: true, data: null });
 
   React.useEffect(() => {
-    getApplicationList();
-  }, [
-    props.offset,
-    props.pageNumber,
-    props.filters.aplicationStatus,
-    props.filters.carear,
-    props.filters.applicant,
-  ]);
+    getApplicationDetails();
+  }, []);
 
   React.useEffect(() => {});
 
-  const getApplicationList = async () => {
+  const getApplicationDetails = async () => {
     let newError: any,
-      newData: ApplicationListAPIResType | null = null;
+      newData: ApplicationFormType | null = null;
     let newLoading = true;
     if (apiData.loading === false) {
       setApiData((pre) => ({ ...pre, loading: true }));
     }
     try {
-      const response: ApplicationListAPIResType = await apiCall(
-        "/myapplications",
+      const response: ApplicationFormType = await apiCall(
+        "/getApplications",
         "GET",
-        { params: props.filters }
+        { params: { applicationId: props.applicationId } }
       );
       newLoading = false;
 

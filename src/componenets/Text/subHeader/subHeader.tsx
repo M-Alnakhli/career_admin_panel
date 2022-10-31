@@ -1,7 +1,3 @@
-
-
 export const SubHeader = () => {
-  return (
-    <div></div>
-  )
-}
+  return <div></div>;
+};

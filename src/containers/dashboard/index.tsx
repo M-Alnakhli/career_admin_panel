@@ -1,7 +1,3 @@
-
-
 export const Dashboard = () => {
-  return (
-    <div>index</div>
-  )
-}
+  return <div>index</div>;
+};

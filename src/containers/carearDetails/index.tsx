@@ -1,8 +1,5 @@
-import React from 'react'
+import React from "react";
 
-export const CarearDetails= () => {
-  return (
-    <div>
-    </div>
-  )
-}
+export const CarearDetails = () => {
+  return <div></div>;
+};

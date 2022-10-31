@@ -12,18 +12,21 @@ import { PersonalInfo } from "./personalInfo";
 import { SkilsInfo } from "./skilsInfo";
 import { ApplicationFormSchema } from "../../validations";
 import { Button } from "../../componenets/Button";
+import { useLocation } from "react-router-dom";
 
 export type ApplicationFormType = {
   firstName: string;
   lastName: string;
   nationality: string;
   email: string;
-  dateOfBirth: Date;
+  dateOfBirth: string;
   mobile: string;
   gender: "Male" | "Female";
   qualifications: AcadimecQualificationType[];
   linkedIn: string;
-  cv: string | number | readonly string[] | undefined;
+  cv: any;
+  positionID: string;
+  applicationId?: string;
 };
 
 type AcadimecQualificationType = {
@@ -31,17 +34,21 @@ type AcadimecQualificationType = {
   counrty: string;
   mager: string;
   degree: "Associate" | "Bachelor" | "Master" | "Doctoral" | "Professional";
-  gpa?: number;
 };
+
 export const CreateForm = () => {
   const [data, errors, loading, submitRusame] = useCreateApplicationAPI();
+  const {
+    state: { item },
+  } = useLocation();
+  console.log("here is the pos i", item.positionId);
 
   const onSubmit = async (
     values: ApplicationFormType,
     { setSubmitting }: { setSubmitting: (state: boolean) => void }
   ) => {
     try {
-      console.log("it comes here ");
+      console.log("here iarwe tje values", values);
 
       setSubmitting(true);
       await submitRusame(values);
@@ -56,12 +63,13 @@ export const CreateForm = () => {
           lastName: "",
           nationality: "",
           email: "",
-          dateOfBirth: new Date(),
+          dateOfBirth: "",
           mobile: "",
           gender: "Male",
           qualifications: [],
           linkedIn: "",
           cv: undefined,
+          positionID: item.positionId,
         }}
         validationSchema={ApplicationFormSchema}
       >

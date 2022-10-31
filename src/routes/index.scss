@@ -1,26 +1,23 @@
+.mainContainer {
+  flex: 1;
+  height: 1000;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.pageContainer {
+  flex: 1;
+  padding-left: 5ch;
+  padding-right: 5ch;
+  display: flex;
+  height: 94vh;
+  overflow-x: hidden;
+  overflow-y: visible;
+  justify-content: center;
+  background-color: rgb(226, 233, 248);
+}
 
-    .mainContainer{
-        flex:1;
-        height:1000;
-        width: 100%;
-        display:flex;
-     flex-direction: row;
-
-    }
-    .pageContainer{
-        flex:1;
-        padding-left:5ch ;
-        padding-right: 5ch;
-        display: flex;
-        height:  94vh;
-        overflow-x: hidden;
-        overflow-y: visible;
-        justify-content: center;
-        background-color: rgb(226, 233, 248);;
-    }
-
-    .publicRoute{
-        display: flex;
-        height: 100vh;
-
-    }
+.publicRoute {
+  display: flex;
+  height: 100vh;
+}

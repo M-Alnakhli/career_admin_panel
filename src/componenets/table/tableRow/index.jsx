@@ -1,11 +1,5 @@
-import './index.style'
+import "./index.style";
 
-
-
-export const TableRow = ()=>{
-
-
-    return (
-        <div></div>
-    )
-}
+export const TableRow = () => {
+  return <div></div>;
+};

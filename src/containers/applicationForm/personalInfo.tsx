@@ -1,9 +1,8 @@
-import React from "react";
 import { FormikProps, useFormikContext, ErrorMessage, Field } from "formik";
 import { Label } from "../../componenets/Text/label";
-import { Selction } from "../../componenets/selction";
+
 import { ApplicationFormType } from "./createForm";
-import { ApplicationFormSchema } from "../../validations";
+
 import { Card } from "../../componenets/Card";
 import { Header } from "../../componenets/Text/header";
 import "./index.scss";
@@ -23,14 +22,13 @@ export const PersonalInfo = () => {
         flexWrap: "wrap",
         paddingLeft: "20px",
         paddingRight: "20px",
-        height: "45vh",
         justifyContent: "space-around",
+        paddingBottom: "30px",
       }}
     >
-      <Header style={{}} size={30}>
+      <Header style={{ marginBottom: "3vh", alignSelf: "start" }} size={30}>
         Personal Information
       </Header>
-
       <div className="feildsContainer">
         <div
           className="poersonalInfoCell1"
@@ -126,13 +124,13 @@ export const PersonalInfo = () => {
         <div style={{ display: "flex" }}>
           <Label style={{ marginRight: "10px" }}>Date of Birth</Label>
           <div>
-            <input
+            <Field
               style={{ height: "3vh" }}
               type="date"
               name="dateOfBirth"
               onChange={handleChange}
               onBlur={handleBlur}
-              value={values.email}
+              value={values.dateOfBirth}
             />
             <ErrorMessage name="dateOfBirth">
               {(errors: string) => (

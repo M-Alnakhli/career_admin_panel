@@ -1,7 +1,4 @@
-
-type Props = {
-
-}
-export const Form = (props:Props)=>{
-    return (<div></div>)
-}
+type Props = {};
+export const Form = (props: Props) => {
+  return <div></div>;
+};

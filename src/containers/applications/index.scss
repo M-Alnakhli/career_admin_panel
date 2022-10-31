@@ -1,45 +1,41 @@
-.lableContainer{
-    display:flex;
-    flex-direction:row;
-    margin-right: 5px;
+.lableContainer {
+  display: flex;
+  flex-direction: row;
+  margin-right: 5px;
 }
 
-.listItem{
-    display:flex;
-  flex-wrap:wrap;
+.listItem {
+  display: flex;
+  flex-wrap: wrap;
 
-width: 40ch;
- box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
- transition: 0.3s;
- border-radius: 5px; 
-  align-items:center;
+  width: 40ch;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  border-radius: 5px;
+  align-items: center;
   border: 1px solid rgba(105, 102, 102, 0.137);
-padding-top: 1vh;
-padding-bottom: 1vh;
-margin-bottom: 15px;
-padding-left: 10px;
-margin-right: 15px;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  margin-bottom: 15px;
+  padding-left: 10px;
+  margin-right: 15px;
 }
-.listItemInfo{
-    display:flex;
-    flex:1;
-    justify-content: space-between;
-    flex-wrap: wrap;
-   
-}
-
-.itemInfoRow{
-
-    display:flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    margin-left: 10px;
-    margin-right: 10px;
- 
-
+.listItemInfo {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
-.applicantImg{
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
+.itemInfoRow {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.applicantImg {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
 }

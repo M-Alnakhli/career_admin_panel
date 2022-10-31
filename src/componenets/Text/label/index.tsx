@@ -1,25 +1,22 @@
-import { CSSProperties, ReactNode } from 'react'
-import './index.scss'
+import { CSSProperties, ReactNode } from "react";
+import "./index.scss";
 
-type Props ={
-  name?:string,
-  style?:CSSProperties,
-  children?:ReactNode|ReactNode[]
-}
+type Props = {
+  name?: string;
+  style?: CSSProperties;
+  children?: ReactNode | ReactNode[];
+};
 
-export const Label:React.FC<Props> =({name,style,children})=>{
+export const Label: React.FC<Props> = ({ name, style, children }) => {
+  return (
+    <p className="label" style={{ fontSize: 13, ...style }}>
+      {children}
+    </p>
+  );
+};
 
-
-
-    return(
-      <p className='label' style={{fontSize:13,...style}}>{children}</p> 
-    )
-} 
-
-
-
-Label.defaultProps= {
-  name:'label',
-  children:'label',
-  style:{}
-}
+Label.defaultProps = {
+  name: "label",
+  children: "label",
+  style: {},
+};
