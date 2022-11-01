@@ -238,11 +238,67 @@ if( requestBody.contains("some data") )&#13;
     return "Response N"&#13;
 }&#13;
 */&#13;
-</con:dispatchPath><con:response name="Response 1" id="ac7ef047-7d43-4389-846c-be3a0155d531" httpResponseStatus="200" mediaType="application/json"><con:settings/><con:responseContent>{"applications":[{"applicationId":1,"firstName":"Chaddie","lastName":"Edgeler","gender":"Male","location":"Pinayagan Norte","img":"https://robohash.org/hicvoluptasimpedit.png?size=50x50&amp;set=set1","posistion":"Structural Engineer","status":"Created"},
-{"applicationId":2,"firstName":"Zita","lastName":"Bubeer","gender":"Female","location":"Huangduobu","img":"https://robohash.org/cumquenatusalias.png?size=50x50&amp;set=set1","posistion":"Marketing Manager","status":"Rejected"},
-{"applicationId":3,"firstName":"Emanuel","lastName":"Holwell","gender":"Male","location":"Huilong","img":"https://robohash.org/estmolestiaequos.png?size=50x50&amp;set=set1","posistion":"Senior Developer","status":"Rejected"},
-{"applicationId":4,"firstName":"Evanne","lastName":"MacNess","gender":"Female","location":"Yashiga","img":"https://robohash.org/inquilabore.png?size=50x50&amp;set=set1","posistion":"Administrative Assistant IV","status":"Created"},
-{"applicationId":5,"firstName":"Shannon","lastName":"Davenall","gender":"Male","location":"Baiqi","img":"https://robohash.org/dictalaborea.png?size=50x50&amp;set=set1","posistion":"Senior Cost Accountant","status":"Created"}],"totalRecords":30}</con:responseContent></con:response></con:restMockAction><con:restMockAction name="/register" method="POST" resourcePath="/register" id="6c750555-246a-4b4e-940c-ec4d85df3b49"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:dispatchPath>/*&#13;
+</con:dispatchPath><con:response name="Response 1" id="ac7ef047-7d43-4389-846c-be3a0155d531" httpResponseStatus="200" mediaType="application/json"><con:settings/><con:responseContent>{
+  "applications": [
+    {
+      "applicationId": 1,
+      "firstName": "Chaddie",
+      "lastName": "Edgeler",
+      "gender": "Male",
+      "location": "Pinayagan Norte",
+      "img": "https://robohash.org/hicvoluptasimpedit.png?size=50x50&amp;set=set1",
+      "posistion": "Structural Engineer",
+      "status": "Created",
+      "positionId":"4456"
+    },
+    {
+      "applicationId": 2,
+      "firstName": "Zita",
+      "lastName": "Bubeer",
+      "gender": "Female",
+      "location": "Huangduobu",
+      "img": "https://robohash.org/cumquenatusalias.png?size=50x50&amp;set=set1",
+      "posistion": "Marketing Manager",
+      "status": "Rejected",
+      "positionId":"4456"
+    },
+    {
+      "applicationId": 3,
+      "firstName": "Emanuel",
+      "lastName": "Holwell",
+      "gender": "Male",
+      "location": "Huilong",
+      "img": "https://robohash.org/estmolestiaequos.png?size=50x50&amp;set=set1",
+      "posistion": "Senior Developer",
+      "status": "Rejected",
+      "positionId":"4456"
+    },
+    {
+      "applicationId": 4,
+      "firstName": "Evanne",
+      "lastName": "MacNess",
+      "gender": "Female",
+      "location": "Yashiga",
+      "img": "https://robohash.org/inquilabore.png?size=50x50&amp;set=set1",
+      "posistion": "Administrative Assistant IV",
+      "status": "Created",
+      "positionId":"4456"
+    },
+    {
+      "applicationId": 5,
+      "firstName": "Shannon",
+      "lastName": "Davenall",
+      "gender": "Male",
+      "location": "Baiqi",
+      "img": "https://robohash.org/dictalaborea.png?size=50x50&amp;set=set1",
+      "posistion": "Senior Cost Accountant",
+      "status": "Created",
+      "positionId":"4456"
+    }
+  ],
+  "totalRecords": 30
+}
+</con:responseContent></con:response></con:restMockAction><con:restMockAction name="/register" method="POST" resourcePath="/register" id="6c750555-246a-4b4e-940c-ec4d85df3b49"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:dispatchPath>/*&#13;
 // Script dispatcher is used to select a response based on the incoming request.&#13;
 // Here are few examples showing how to match based on path, query param, header and body&#13;
 &#13;
