@@ -32,6 +32,7 @@ export type ApplicationFormType = {
 };
 
 type AcadimecQualificationType = {
+  [x: string]: string | number | readonly string[] | undefined;
   institution: string;
   country: string;
   mager: string;
@@ -79,6 +80,7 @@ const setFile =(newFile :any)=>{
 
 
 
+
   return (
     <div style={{ padding: "3ch", flex: 1, display: "flex", flexWrap: "wrap" }}>
       <Formik
@@ -99,7 +101,7 @@ const setFile =(newFile :any)=>{
           applicationId:item.applicationId
 
         }}
-      
+      validationSchema={ApplicationFormSchema}
       >
         {({ handleSubmit }) => (
           <form
