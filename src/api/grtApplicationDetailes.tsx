@@ -18,7 +18,6 @@ export const useApplicationDetailsAPI = (props: Props) => {
     getApplicationDetails();
   }, []);
 
-
   const getApplicationDetails = async () => {
     let newError: any,
       newData: ApplicationFormType | null = null;
@@ -38,8 +37,8 @@ export const useApplicationDetailsAPI = (props: Props) => {
         newData = response;
       }
     } catch (e) {
-        console.log(e);
-        
+      console.log(e);
+
       newError = e;
     }
 

@@ -28,7 +28,7 @@ export const Button = (props: Props) => {
     <button
       type={props.buttonType}
       className="button"
-      data-testid={'button'}
+      data-testid={"button"}
       style={{
         background: buttonColorRenderer(),
         borderWidth: 0,

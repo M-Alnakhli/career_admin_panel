@@ -13,16 +13,18 @@ export type Props = {
 };
 export const MyApplicationlistRow = (props: Props) => {
   const navigation = useNavigate();
-  
+
   const [data, errors, loading, deleteApplication] = useDeleteApplicationAPI();
   const onClick = () => {
     navigation(`/applicationForm/${props.applicationItem.applicationId}`, {
       state: { item: { ...props } },
     });
   };
-  const navigateToUpdateForm =()=>{
-    navigation(`/updateFormPage/${props.applicationItem.applicationId}`,{state:{item: props.applicationItem}})
-  } 
+  const navigateToUpdateForm = () => {
+    navigation(`/updateFormPage/${props.applicationItem.applicationId}`, {
+      state: { item: props.applicationItem },
+    });
+  };
   const statusColorRendarer = React.useCallback(
     (status: ApplicationStatusType): string => {
       switch (status) {
@@ -64,7 +66,7 @@ export const MyApplicationlistRow = (props: Props) => {
             {props.applicationItem.status === "Created" ? (
               <>
                 <Edit
-                onClick={navigateToUpdateForm}
+                  onClick={navigateToUpdateForm}
                   style={{ marginRight: "10px" }}
                   width={"15px"}
                   height={"15px"}

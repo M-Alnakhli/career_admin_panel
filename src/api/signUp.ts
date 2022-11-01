@@ -23,8 +23,8 @@ export const useSignUpAPI = () => {
       const response: SignUpAPIResType = await apiCall("/register", "post", {
         data,
       });
-          console.log("here is the resposne 44",response);
-          
+      console.log("here is the resposne 44", response);
+
       if (response?.status !== undefined) {
         newData = response;
       }

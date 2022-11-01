@@ -23,12 +23,12 @@ const apiCallExecuter = async (config: AxiosRequestConfig) => {
       return response;
     });
 
-
     const response = await axios(config);
     if (response.data !== undefined) {
       return response.data;
     }
-  } catch (e) {console.log('here is the issue',e);
+  } catch (e) {
+    console.log("here is the issue", e);
   }
 };
 

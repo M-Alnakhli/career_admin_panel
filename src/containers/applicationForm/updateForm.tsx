@@ -26,9 +26,9 @@ export type ApplicationFormType = {
   qualifications: AcadimecQualificationType[];
   linkedIn: string;
   cv: any;
-  positionID:string;
+  positionID: string;
   applicationId?: string;
-  withSubmiit?:boolean;
+  withSubmiit?: boolean;
 };
 
 type AcadimecQualificationType = {
@@ -38,35 +38,35 @@ type AcadimecQualificationType = {
   mager: string;
   degree: "Associate" | "Bachelor" | "Master" | "Doctoral" | "Professional";
 };
-type Props={}
-export const UpdateForm = (props:Props) => {
-
+type Props = {};
+export const UpdateForm = (props: Props) => {
   const {
     state: { item },
   } = useLocation();
-  
+
   const [data, errors, loading, updateApplication] = useCreateApplicationAPI();
-  const [getData, getErrors, getLoading]=useApplicationDetailsAPI(item.applicationId)
-  const file=React.useRef(null)
-  const withSubmit=React.useRef(false)
-const setFile =(newFile :any)=>{
- 
-    file.current = newFile
-}
-  
+  const [getData, getErrors, getLoading] = useApplicationDetailsAPI(
+    item.applicationId
+  );
+  const file = React.useRef(null);
+  const withSubmit = React.useRef(false);
+  const setFile = (newFile: any) => {
+    file.current = newFile;
+  };
+
   const onSubmit = async (
     values: ApplicationFormType,
     { setSubmitting }: { setSubmitting: (state: boolean) => void }
   ) => {
     try {
       setSubmitting(true);
-      let newValues ={...values,withSubmit:withSubmit.current}
-      if(typeof newValues.cv==='string'&&file.current!==null){
-        console.log("inSubmit",file.current);
-        
-        newValues.cv =file.current
+      let newValues = { ...values, withSubmit: withSubmit.current };
+      if (typeof newValues.cv === "string" && file.current !== null) {
+        console.log("inSubmit", file.current);
+
+        newValues.cv = file.current;
       }
-     
+
       await updateApplication(newValues);
     } catch (e) {}
   };
@@ -78,30 +78,25 @@ const setFile =(newFile :any)=>{
     return <p>Error</p>;
   }
 
-
-
-
   return (
     <div style={{ padding: "3ch", flex: 1, display: "flex", flexWrap: "wrap" }}>
       <Formik
-  
         onSubmit={onSubmit}
         initialValues={{
-          firstName: getData?.firstName||'',
-          lastName: getData?.lastName||"",
-          nationality: getData?.nationality||"",
-          email: getData?.email||"",
-          dateOfBirth:getData?.email|| '',
-          mobile:getData?.mobile|| "",
-          gender: getData?.gender||"Male",
-          qualifications: getData?.qualifications||[],
-          linkedIn: getData?.linkedIn||"",
+          firstName: getData?.firstName || "",
+          lastName: getData?.lastName || "",
+          nationality: getData?.nationality || "",
+          email: getData?.email || "",
+          dateOfBirth: getData?.email || "",
+          mobile: getData?.mobile || "",
+          gender: getData?.gender || "Male",
+          qualifications: getData?.qualifications || [],
+          linkedIn: getData?.linkedIn || "",
           cv: undefined,
-          positionID:item.positionId,
-          applicationId:item.applicationId
-
+          positionID: item.positionId,
+          applicationId: item.applicationId,
         }}
-      validationSchema={ApplicationFormSchema}
+        validationSchema={ApplicationFormSchema}
       >
         {({ handleSubmit }) => (
           <form
@@ -126,9 +121,10 @@ const setFile =(newFile :any)=>{
               <Button
                 color="white"
                 type={"Submit"}
-                action={(e:React.FormEvent<HTMLFormElement> )=>{
-                  withSubmit.current=true
-                  handleSubmit(e)}}
+                action={(e: React.FormEvent<HTMLFormElement>) => {
+                  withSubmit.current = true;
+                  handleSubmit(e);
+                }}
                 name="submit"
                 label="Submit"
                 style={{

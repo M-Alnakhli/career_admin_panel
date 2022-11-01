@@ -1,8 +1,4 @@
-import {
-  FormikProps,
-  useFormikContext,
-  FieldArray,
-} from "formik";
+import { FormikProps, useFormikContext, FieldArray } from "formik";
 import { ApplicationFormType } from "./createForm";
 import { Card } from "../../componenets/Card";
 import { Header } from "../../componenets/Text/header";
@@ -10,8 +6,9 @@ import { Button } from "../../componenets/Button";
 import { EduacationFormTemplate } from "./educationTemlate";
 import {} from "./";
 export const EducationInfo = () => {
-  const { values ,errors}: FormikProps<ApplicationFormType> = useFormikContext();
-  console.log("here is all Aeerros ",errors);
+  const { values, errors }: FormikProps<ApplicationFormType> =
+    useFormikContext();
+  console.log("here is all Aeerros ", errors);
   return (
     <Card
       style={{

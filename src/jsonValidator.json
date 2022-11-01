@@ -9,7 +9,7 @@
       "img": "https://robohash.org/hicvoluptasimpedit.png?size=50x50&set=set1",
       "posistion": "Structural Engineer",
       "status": "Created",
-      "positionId":"4456"
+      "positionId": "4456"
     },
     {
       "applicationId": 2,
@@ -20,7 +20,7 @@
       "img": "https://robohash.org/cumquenatusalias.png?size=50x50&set=set1",
       "posistion": "Marketing Manager",
       "status": "Rejected",
-      "positionId":"4456"
+      "positionId": "4456"
     },
     {
       "applicationId": 3,
@@ -31,7 +31,7 @@
       "img": "https://robohash.org/estmolestiaequos.png?size=50x50&set=set1",
       "posistion": "Senior Developer",
       "status": "Rejected",
-      "positionId":"4456"
+      "positionId": "4456"
     },
     {
       "applicationId": 4,
@@ -42,7 +42,7 @@
       "img": "https://robohash.org/inquilabore.png?size=50x50&set=set1",
       "posistion": "Administrative Assistant IV",
       "status": "Created",
-      "positionId":"4456"
+      "positionId": "4456"
     },
     {
       "applicationId": 5,
@@ -53,7 +53,7 @@
       "img": "https://robohash.org/dictalaborea.png?size=50x50&set=set1",
       "posistion": "Senior Cost Accountant",
       "status": "Created",
-      "positionId":"4456"
+      "positionId": "4456"
     }
   ],
   "totalRecords": 30

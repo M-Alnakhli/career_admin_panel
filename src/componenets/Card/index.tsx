@@ -10,7 +10,7 @@ export const Card: React.FC<Props> = ({ children, style, onClick }) => {
     <div
       onClick={typeof onClick === "function" ? onClick : () => {}}
       className="card"
-      data-testid={'card'}
+      data-testid={"card"}
       style={{ ...style }}
     >
       {children}

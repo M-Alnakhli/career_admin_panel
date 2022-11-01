@@ -27,7 +27,7 @@ export type ApplicationFormType = {
   cv: any;
   positionID: string;
   applicationId?: string;
-  withSubmit?:boolean
+  withSubmit?: boolean;
 };
 
 type AcadimecQualificationType = {
@@ -40,27 +40,26 @@ type AcadimecQualificationType = {
 
 export const CreateForm = () => {
   const [data, errors, loading, submitRusame] = useCreateApplicationAPI();
-  const file=React.useRef(null)
-  const withSubmit=React.useRef(false)
-  const setFile =(newFile :any)=>{
-      file.current = newFile
-  }
+  const file = React.useRef(null);
+  const withSubmit = React.useRef(false);
+  const setFile = (newFile: any) => {
+    file.current = newFile;
+  };
   const {
     state: { item },
   } = useLocation();
- 
+
   const onSubmit = async (
     values: ApplicationFormType,
     { setSubmitting }: { setSubmitting: (state: boolean) => void }
   ) => {
     try {
-
-      let newValues ={...values,withSubmit:withSubmit.current}
-      if(typeof newValues.cv==='string'&&file.current!==null){
-        console.log("inSubmit",file.current);
-        newValues.cv =file.current
+      let newValues = { ...values, withSubmit: withSubmit.current };
+      if (typeof newValues.cv === "string" && file.current !== null) {
+        console.log("inSubmit", file.current);
+        newValues.cv = file.current;
       }
-     
+
       setSubmitting(true);
       await submitRusame(newValues);
     } catch (e) {}
@@ -107,9 +106,10 @@ export const CreateForm = () => {
               <Button
                 color="white"
                 type={"Submit"}
-                action={(e:React.FormEvent<HTMLFormElement> )=>{
-                  withSubmit.current=true
-                  handleSubmit(e)}}
+                action={(e: React.FormEvent<HTMLFormElement>) => {
+                  withSubmit.current = true;
+                  handleSubmit(e);
+                }}
                 name="submit"
                 label="Submit"
                 style={{

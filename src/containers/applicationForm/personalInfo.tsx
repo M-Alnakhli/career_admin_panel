@@ -77,7 +77,6 @@ export const PersonalInfo = () => {
           >
             {options.map((element, innerIndex) => (
               <option value={element.value}>
-                {" "}
                 <Label>{element.label}</Label>
               </option>
             ))}
