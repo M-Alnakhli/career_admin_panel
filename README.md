@@ -1,6 +1,10 @@
 # Running Carears
 1. make sure u run soapui and app 
 2. to chack Admin  action please login , to check user action do register , this is just due to soupui mock response .
+3. endpoints exisit in portalSoup.xml
+4. to open mock services run spoupui  and the got to  file > import project , and select  portalSoup.xml
+5. on the left sicde of soupui ,expand Project1 ,SuitOne will appear 
+6.  open SuitOne. to see the run controllers
 
 ## Getting Started with Create React App
 
