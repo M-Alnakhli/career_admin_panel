@@ -61,7 +61,10 @@ export const CreateForm = () => {
       }
 
       setSubmitting(true);
-      await submitRusame(newValues);
+      const response = await submitRusame(newValues);
+      console.log(response);
+      
+   
     } catch (e) {}
   };
   return (

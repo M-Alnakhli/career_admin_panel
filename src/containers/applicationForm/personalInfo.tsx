@@ -133,7 +133,7 @@ export const PersonalInfo = () => {
             />
             <ErrorMessage name="dateOfBirth">
               {(errors: string) => (
-                <Label style={{ color: "red", fontSize: 5 }}>{errors}</Label>
+                <Label style={{ color: "red"}}>{errors}</Label>
               )}
             </ErrorMessage>
           </div>

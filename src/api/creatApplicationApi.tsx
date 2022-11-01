@@ -41,8 +41,10 @@ export const useCreateApplicationAPI = () => {
         "post",
         { data: formData, header: headers }
       );
+      alert('Application is submited successfully')
       if (response?.applicationId !== undefined) {
         newData = response;
+        
       }
     } catch (e) {
       console.log(e);
@@ -51,6 +53,7 @@ export const useCreateApplicationAPI = () => {
     }
 
     setApiData({ loading: false, data: newData, errors: { error: newErros } });
+
   };
 
   return [apiData.data, apiData.errors, apiData.loading, submitRusame];
