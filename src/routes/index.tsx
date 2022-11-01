@@ -50,7 +50,6 @@ export const Router = (props: Props) => {
             </div>
           ) : (
             <div className="publicRoute">
-              {" "}
               <PublicRoute />
             </div>
           )}

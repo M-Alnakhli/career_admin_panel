@@ -3,7 +3,7 @@ import React, { CSSProperties } from "react";
 
 type Props = {
   name: string;
-  action: () => void;
+  action: (...args: any[]) => void;
   color: string;
   icon?: () => React.ReactNode;
   label?: string;
@@ -28,6 +28,7 @@ export const Button = (props: Props) => {
     <button
       type={props.buttonType}
       className="button"
+      data-testid={'button'}
       style={{
         background: buttonColorRenderer(),
         borderWidth: 0,

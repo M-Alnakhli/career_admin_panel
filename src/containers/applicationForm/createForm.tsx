@@ -27,29 +27,39 @@ export type ApplicationFormType = {
   cv: any;
   positionID: string;
   applicationId?: string;
+  withSubmit?:boolean
 };
 
 type AcadimecQualificationType = {
+  [x: string]: string | number | readonly string[] | undefined;
   institution: string;
-  counrty: string;
+  country: string;
   mager: string;
   degree: "Associate" | "Bachelor" | "Master" | "Doctoral" | "Professional";
 };
 
 export const CreateForm = () => {
   const [data, errors, loading, submitRusame] = useCreateApplicationAPI();
+  const file=React.useRef(null)
+  const withSubmit=React.useRef(false)
+  const setFile =(newFile :any)=>{
+      file.current = newFile
+  }
   const {
     state: { item },
   } = useLocation();
-  console.log("here is the pos i", item.positionId);
-
+ 
   const onSubmit = async (
     values: ApplicationFormType,
     { setSubmitting }: { setSubmitting: (state: boolean) => void }
   ) => {
     try {
-      console.log("here iarwe tje values", values);
 
+      let newValues ={...values,withSubmit:withSubmit.current}
+      if(typeof newValues.cv==='string'&&file.current!==null){
+        newValues.cv =file.current
+      }
+     
       setSubmitting(true);
       await submitRusame(values);
     } catch (e) {}
@@ -85,7 +95,7 @@ export const CreateForm = () => {
           >
             <PersonalInfo />
             <EducationInfo />
-            <CVInfo />
+            <CVInfo setFile={setFile} />
             <div
               style={{
                 marginTop: "2vh",
@@ -96,7 +106,9 @@ export const CreateForm = () => {
               <Button
                 color="white"
                 type={"Submit"}
-                action={handleSubmit}
+                action={(e:React.FormEvent<HTMLFormElement> )=>{
+                  withSubmit.current=true
+                  handleSubmit(e)}}
                 name="submit"
                 label="Submit"
                 style={{

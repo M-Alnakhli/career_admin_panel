@@ -23,30 +23,20 @@ export const useCreateApplicationAPI = () => {
     try {
       let formData = new FormData();
 
-      let otherData: any = {
-        firstName: applicationInfo.firstName,
-        lastName: applicationInfo.lastName,
-        nationality: applicationInfo.nationality,
-        email: applicationInfo.email,
-        dateOfBirth: applicationInfo.dateOfBirth,
-        mobile: applicationInfo.mobile,
-        gender: applicationInfo.gender,
-        linkedIn: applicationInfo.linkedIn,
-        positionID: applicationInfo.positionID,
-      };
+      let otherData= requestFormatter(applicationInfo)
 
-      //check if application do exist include it ;
-      if (applicationInfo.applicationId !== undefined) {
-        otherData.applicationId = applicationInfo.applicationId;
-      }
 
       formData.append(
         "qualifications",
         JSON.stringify(applicationInfo.qualifications)
       );
       formData.append("otherData", JSON.stringify(otherData));
-      let headers: any = {};
-
+        console.log('here is cv',applicationInfo.cv);
+        
+      formData.append('file',applicationInfo.cv)
+      let headers: any = { "content-type": "multipart/form-data" };
+        console.log('here is the data fromate',Object.fromEntries(formData));
+        
       const response: ApplicationCreateAPIResType = await apiCall(
         "/createApplication",
         "post",
@@ -66,3 +56,29 @@ export const useCreateApplicationAPI = () => {
 
   return [apiData.data, apiData.errors, apiData.loading, submitRusame];
 };
+
+
+
+
+const requestFormatter=(applicationInfo: ApplicationFormType)=>{
+
+  let otherData: any = {
+    firstName: applicationInfo.firstName,
+    lastName: applicationInfo.lastName,
+    nationality: applicationInfo.nationality,
+    email: applicationInfo.email,
+    dateOfBirth: applicationInfo.dateOfBirth,
+    mobile: applicationInfo.mobile,
+    gender: applicationInfo.gender,
+    linkedIn: applicationInfo.linkedIn,
+    positionID: applicationInfo.positionID,
+    withSubmit:applicationInfo.withSubmit,
+
+  };
+
+  //check if application do exist include it ;
+  if (applicationInfo.applicationId !== undefined) {
+    otherData.applicationId = applicationInfo.applicationId;
+  }
+  return otherData
+}

@@ -22,11 +22,14 @@ const apiCallExecuter = async (config: AxiosRequestConfig) => {
       console.log("Response:", JSON.stringify(response, null, 2));
       return response;
     });
+
+
     const response = await axios(config);
     if (response.data !== undefined) {
       return response.data;
     }
-  } catch (e) {}
+  } catch (e) {console.log('here is the issue',e);
+  }
 };
 
 export const apiCall = async (

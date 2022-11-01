@@ -27,7 +27,7 @@ const PrivateAdminRoute_List = [
 ];
 
 const PrivateCandidateRoute_List = [
-  { name: "home", path: "/", element: <Dashboard /> },
+ 
   {
     name: "alpplications",
     path: "/myownapplications",
@@ -43,10 +43,12 @@ const PrivateCandidateRoute_List = [
     path: "/applicationDetails/:id",
     element: <ApplicationDetails />,
   },
-  { name: "careers", path: "/carears", element: <Carears /> },
+  { name: "careers", path: "/carears", element: <Carears/> },
+  { name: "updateForm", path: "/updateFormPage/:id", element: <UpdateForm/> },
   { name: "carearDetails", path: "/carearDetails", element: <CarearDetails /> },
   { name: "createForm", path: "/createForm", element: <CreateForm /> },
-   {name:'updateForm',path:"/updateFormPage",element:<UpdateForm/>}
+  { name: "home", path: "/", element: <Dashboard /> },
+   
 ];
 const PublicCandidateRoute_List = [
   { name: "signIn", path: "/", element: <SignIn /> },

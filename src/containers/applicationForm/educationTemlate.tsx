@@ -111,12 +111,12 @@ export const EduacationFormTemplate = (props: Props) => {
         <div>
           <input
             style={{ height: "3vh" }}
-            name={`qualifications.${props.index}.counrty`}
+            name={`qualifications.${props.index}.country`}
             onChange={handleChange}
             onBlur={handleBlur}
-            value={values.qualifications[props.index].counrty}
+            value={values.qualifications[props.index].country}
           />
-          <ErrorMessage name={`qualifications.${props.index}.counrty`}>
+          <ErrorMessage name={`qualifications.${props.index}.country`}>
             {(errors: string) => (
               <Label style={{ color: "red" }}>{errors}</Label>
             )}

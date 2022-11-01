@@ -11,7 +11,7 @@ export const useLoginAPI = () => {
   }>({ errors: null, loading: true, data: null });
 
   const login = async (data: SignInAPIReqType) => {
-    console.log("here xcdc");
+
 
     let newData,
       newError = null;
@@ -26,7 +26,7 @@ export const useLoginAPI = () => {
       const response: SignInAPIResType = await apiCall("/login", "post", {
         data,
       });
-      console.log("here is the response ");
+    
 
       if (response?.status !== undefined) {
         newData = response;

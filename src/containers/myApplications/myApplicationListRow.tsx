@@ -21,7 +21,7 @@ export const MyApplicationlistRow = (props: Props) => {
     });
   };
   const navigateToUpdateForm =()=>{
-    navigation('/updateFormPage',{state:{item: { ...props }}})
+    navigation(`/updateFormPage/${props.applicationItem.applicationId}`,{state:{item: props.applicationItem}})
   } 
   const statusColorRendarer = React.useCallback(
     (status: ApplicationStatusType): string => {

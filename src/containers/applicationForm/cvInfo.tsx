@@ -6,8 +6,11 @@ import { ApplicationFormType } from "./createForm";
 import { ApplicationFormSchema } from "../../validations";
 import { Card } from "../../componenets/Card";
 import { Header } from "../../componenets/Text/header";
-export const CVInfo = () => {
-  const { values, handleBlur, handleChange }: FormikProps<ApplicationFormType> =
+type Props ={
+  setFile:(file :any)=>void
+}
+export const CVInfo = (props:Props) => {
+  const { values, handleBlur, handleChange,setFieldValue }: FormikProps<ApplicationFormType> =
     useFormikContext();
 
   return (
@@ -72,7 +75,18 @@ export const CVInfo = () => {
               style={{ height: "3vh" }}
               name="cv"
               type={"file"}
-              onChange={handleChange}
+              onChange={(event) => {
+                if (!event.currentTarget.files || event.currentTarget.files.length === 0) {
+                  // you can display the error to the user
+                  console.error("Select a file");
+                  return;
+                }
+                console.log( event.currentTarget.files[0])
+                console.log("event.currentTarget.files[0].name",event.currentTarget.files[0].name);
+                
+                props.setFile( event.currentTarget.files[0])
+                handleChange(event)}}
+          
               onBlur={handleBlur}
               value={values.cv}
             />

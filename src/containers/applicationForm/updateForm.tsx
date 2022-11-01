@@ -26,25 +26,32 @@ export type ApplicationFormType = {
   qualifications: AcadimecQualificationType[];
   linkedIn: string;
   cv: any;
-  positionID:string
+  positionID:string;
+  applicationId?: string;
+  withSubmiit?:boolean;
 };
 
 type AcadimecQualificationType = {
   institution: string;
-  counrty: string;
+  country: string;
   mager: string;
   degree: "Associate" | "Bachelor" | "Master" | "Doctoral" | "Professional";
 };
+type Props={}
+export const UpdateForm = (props:Props) => {
 
-export const UpdateForm = () => {
-
-  const {state:{item}} = useLocation()
+  const {
+    state: { item },
+  } = useLocation();
   
   const [data, errors, loading, updateApplication] = useCreateApplicationAPI();
   const [getData, getErrors, getLoading]=useApplicationDetailsAPI(item.applicationId)
-  
-
-
+  const file=React.useRef(null)
+  const withSubmit=React.useRef(false)
+const setFile =(newFile :any)=>{
+ 
+    file.current = newFile
+}
   
   const onSubmit = async (
     values: ApplicationFormType,
@@ -52,7 +59,14 @@ export const UpdateForm = () => {
   ) => {
     try {
       setSubmitting(true);
-      await updateApplication(values);
+      let newValues ={...values,withSubmit:withSubmit.current}
+      if(typeof newValues.cv==='string'&&file.current!==null){
+        console.log("inSubmit",file.current);
+        
+        newValues.cv =file.current
+      }
+     
+      await updateApplication(newValues);
     } catch (e) {}
   };
 
@@ -85,7 +99,7 @@ export const UpdateForm = () => {
           applicationId:item.applicationId
 
         }}
-        validationSchema={ApplicationFormSchema}
+      
       >
         {({ handleSubmit }) => (
           <form
@@ -99,7 +113,7 @@ export const UpdateForm = () => {
           >
             <PersonalInfo />
             <EducationInfo />
-            <CVInfo />
+            <CVInfo setFile={setFile} />
             <div
               style={{
                 marginTop: "2vh",
@@ -110,7 +124,9 @@ export const UpdateForm = () => {
               <Button
                 color="white"
                 type={"Submit"}
-                action={handleSubmit}
+                action={(e:React.FormEvent<HTMLFormElement> )=>{
+                  withSubmit.current=true
+                  handleSubmit(e)}}
                 name="submit"
                 label="Submit"
                 style={{
