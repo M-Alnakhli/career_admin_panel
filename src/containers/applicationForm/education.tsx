@@ -10,8 +10,8 @@ import { Button } from "../../componenets/Button";
 import { EduacationFormTemplate } from "./educationTemlate";
 import {} from "./";
 export const EducationInfo = () => {
-  const { values }: FormikProps<ApplicationFormType> = useFormikContext();
-
+  const { values ,errors}: FormikProps<ApplicationFormType> = useFormikContext();
+  console.log("here is all Aeerros ",errors);
   return (
     <Card
       style={{

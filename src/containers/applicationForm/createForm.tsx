@@ -57,11 +57,12 @@ export const CreateForm = () => {
 
       let newValues ={...values,withSubmit:withSubmit.current}
       if(typeof newValues.cv==='string'&&file.current!==null){
+        console.log("inSubmit",file.current);
         newValues.cv =file.current
       }
      
       setSubmitting(true);
-      await submitRusame(values);
+      await submitRusame(newValues);
     } catch (e) {}
   };
   return (
